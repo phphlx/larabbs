@@ -42,6 +42,8 @@ Route::prefix('v1')
                     ->name('api.authorizations.store');
                 //小程序登录
                 Route::post('weapp/authorizations', [\App\Http\Controllers\Api\AuthorizationsController::class, 'weappStore'])->name('weapp.authorizations.store');
+                // 小程序注册
+                Route::post('weapp/users', [\App\Http\Controllers\Api\UsersController::class, 'weappStore'])->name('weapp.users.store');
                 // 刷新token
                 Route::put('authorizations/current', 'AuthorizationsController@update')
                     ->name('authorizations.update');
