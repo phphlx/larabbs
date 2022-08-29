@@ -38,18 +38,6 @@ class UsersController extends Controller
 
     public function weappStore(UserRequest $request)
     {
-        // 缓存中是否存在对应的 key
-        $verifyData = \Cache::get($request->verification_key);
-
-        if (!$verifyData) {
-            abort(403, '验证码已失效');
-        }
-
-        // 判断验证码是否相等，不相等反回 401 错误
-        if (!hash_equals((string)$verifyData['code'], $request->verification_code)) {
-            throw new AuthenticationException('验证码错误');
-        }
-
         // 获取微信的 openid 和 session_key
         $miniProgram = \EasyWeChat::miniProgram();
         $data = $miniProgram->auth->session($request->code);
@@ -68,7 +56,8 @@ class UsersController extends Controller
         // 创建用户
         $user = User::create([
             'name' => $request->name,
-            'phone' => $verifyData['phone'],
+            'phone' => $request->phone,
+            'email' => $request->email,
             'password' => $request->password,
             'weapp_openid' => $data['openid'],
             'weixin_session_key' => $data['session_key'],
@@ -91,7 +80,7 @@ class UsersController extends Controller
     {
         $user = $request->user();
 
-        $attributes = $request->only(['name', 'email', 'introduction', 'registration_id']);
+        $attributes = $request->only(['name', 'email', 'phone', 'introduction', 'registration_id']);
 
         if ($request->avatar_image_id) {
             $image = Image::find($request->avatar_image_id);

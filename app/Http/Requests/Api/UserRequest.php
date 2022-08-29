@@ -15,10 +15,10 @@ class UserRequest extends FormRequest
         switch($this->method()) {
         case 'POST':
             return [
-                'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name',
+                'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/',
                 'password' => 'required|string|min:6',
-                'verification_key' => 'required|string',
-                'verification_code' => 'required|string',
+                'email'=>'nullable|email|unique:users,email',
+                'phone' => 'nullable|digits:11|unique:users,phone'
             ];
             break;
         case 'PUT':
@@ -26,8 +26,11 @@ class UserRequest extends FormRequest
             $userId = auth('api')->id();
 
             return [
-                'name' => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' .$userId,
-                'email'=>'email|unique:users,email,'.$userId,
+                'name' => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$/',
+                'email'=>'required_without:phone|nullable|email|unique:users,email,'.$userId,
+                'phone'=>[
+                    'required_without:email', 'nullable', 'digits: 11', 'unique:users,phone,' . $userId,
+                ],
                 'introduction' => 'max:80',
                 'avatar_image_id' => 'exists:images,id,type,avatar,user_id,'.$userId,
             ];
