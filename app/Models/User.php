@@ -48,6 +48,11 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
         'email_verified_at' => 'datetime',
     ];
 
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
+
     public function topics()
     {
         return $this->hasMany(Topic::class);

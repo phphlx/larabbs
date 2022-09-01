@@ -62,9 +62,16 @@ Route::prefix('v1')
                 // 某个用户发布的话题
                 Route::get('users/{user}/topics', 'TopicsController@userIndex')
                     ->name('users.topics.index');
+                // 某个用户发布的视频
+                Route::get('users/{user}/videos', 'VideosController@userIndex')
+                    ->name('users.videos.index');
                 // 话题列表，详情
                 Route::resource('topics', 'TopicsController')->only([
                     'index', 'show'
+                ]);
+                // 视频详情
+                Route::resource('videos', 'VideosController')->only([
+                    'show'
                 ]);
                 // 话题回复列表
                 Route::get('topics/{topic}/replies', 'RepliesController@index')
@@ -93,6 +100,13 @@ Route::prefix('v1')
                     // 上传图片
                     Route::post('images', 'ImagesController@store')
                         ->name('images.store');
+                    // 上传视频
+                    Route::post('video/upload', 'ImagesController@videoStore')
+                        ->name('video.upload');
+                    // 发布视频
+                    Route::resource('videos', 'VideosController')->only([
+                        'store', 'update', 'destroy'
+                    ]);
                     // 发布话题
                     Route::resource('topics', 'TopicsController')->only([
                         'store', 'update', 'destroy'
