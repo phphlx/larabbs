@@ -79,6 +79,10 @@ Route::prefix('v1')
                 // 某个用户的回复列表
                 Route::get('users/{user}/replies', 'RepliesController@userIndex')
                     ->name('users.replies.index');
+                // 某个用户的群列表
+                Route::get('users/{user}/quns', 'QunsController@userIndex')->name('users.quns.index');
+                // 群详情
+                Route::get('quns/{qun}', 'QunsController@show')->name('quns.show');
                 // 资源推荐
                 Route::get('links', 'LinksController@index')
                     ->name('links.index');
@@ -117,6 +121,10 @@ Route::prefix('v1')
                     // 删除回复
                     Route::delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
                         ->name('topics.replies.destroy');
+                    // 发布群
+                    Route::resource('quns', 'QunsController')->only([
+                        'store', 'update', 'destroy'
+                    ]);
                     // 通知列表
                     Route::get('notifications', 'NotificationsController@index')
                         ->name('notifications.index');

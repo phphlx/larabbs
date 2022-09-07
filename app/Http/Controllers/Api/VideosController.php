@@ -41,6 +41,7 @@ class VideosController extends Controller
         $video->video = $request->video[0]['url'];
         $video->intro = $request->intro;
         $video->qrcode = $request->qrcode[0]['url'];
+        $video->time = $request->time;
         $video->share_title = $request->shareTitle;
         $video->share_img = $request->shareImg[0]['url'];
         $video->user_id = $request->user()->id;
@@ -77,6 +78,7 @@ class VideosController extends Controller
         $video->video = $request->video[0]['url'];
         $video->intro = $request->intro;
         $video->qrcode = $request->qrcode[0]['url'];
+        $video->time = $request->time;
         $video->share_title = $request->shareTitle;
         $video->share_img = $request->shareImg[0]['url'];
         $video->user_id = $request->user()->id;

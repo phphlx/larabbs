@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VideoRequest extends FormRequest
+class QunRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,11 +27,11 @@ class VideoRequest extends FormRequest
             case 'POST':
             case 'PATCH':
                 return [
-                    'title' => 'required|string',
-                    'video' => 'required',
+                    'name' => 'required|string',
                     'intro' => 'required|string',
+                    'avatar' => 'required',
                     'qrcode' => 'required',
-                    'time' => 'required',
+                    'num' => 'required',
                     'shareTitle' => 'required|string',
                     'shareImg' => 'required',
                 ];

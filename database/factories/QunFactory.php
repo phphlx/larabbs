@@ -13,16 +13,16 @@ $avatars = [
     'https://cdn.learnku.com/uploads/images/201710/14/1/NDnzMutoxX.png',
 ];
 
-$factory->define(\App\Models\Video::class, function (Faker $faker) use ($avatars) {
+$factory->define(\App\Models\Qun::class, function (Faker $faker) use ($avatars) {
 
     $date_time = $faker->date . ' ' . $faker->time;
     return [
         'user_id' => random_int(1, 10),
-        'title' => $faker->title,
-        'video' => $faker->randomElement($avatars),
+        'name' => $faker->name,
         'intro' => $faker->sentence,
+        'avatar' => $faker->randomElement($avatars),
         'qrcode' => $faker->randomElement($avatars),
-        'time' => random_int(10, 30),
+        'num' => random_int(100, 200),
         'share_title' => $faker->title,
         'share_img' => $faker->randomElement($avatars),
         'created_at' => $date_time,

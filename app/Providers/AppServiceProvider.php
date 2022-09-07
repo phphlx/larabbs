@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Topic::observe(\App\Observers\TopicObserver::class);
         \App\Models\Link::observe(\App\Observers\LinkObserver::class);
         \App\Models\Video::observe(\App\Observers\VideoObserver::class);
+        \App\Models\Qun::observe(\App\Observers\QunObserver::class);
 
         JsonResource::withoutWrapping();
     }

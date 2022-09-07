@@ -20,6 +20,7 @@ class CreateVideosTable extends Migration
             $table->string('video');
             $table->text('intro');
             $table->string('qrcode');
+            $table->integer('time');
             $table->string('share_title');
             $table->string('share_img');
             $table->timestamps();
