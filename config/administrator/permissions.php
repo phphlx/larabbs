@@ -19,11 +19,27 @@ return [
         },
         // 允许更新
         'update' => function ($model) {
-            return true;
+            if (request('id')) {
+                $permission = Permission::findById(request('id'));
+                if (!$permission->users()->count() && !$permission->roles()->has('users')->count()) {
+                    return true;
+                }
+                return false;
+            } else {
+                return true;
+            }
         },
         // 不允许删除
         'delete' => function ($model) {
-            return false;
+            if (request('id')) {
+                $permission = Permission::findById(request('id'));
+                if (!$permission->users()->count() && !$permission->roles()->has('users')->count()) {
+                    return true;
+                }
+                return false;
+            } else {
+                return true;
+            }
         },
         // 允许查看
         'view' => function ($model) {
@@ -36,7 +52,10 @@ return [
             'title' => 'ID',
         ],
         'name' => [
-            'title'    => '标示',
+            'title'    => '标示(仅当前权限无用户时可修改/删除',
+        ],
+        'day' => [
+            'title'    => '天数',
         ],
         'operation' => [
             'title'    => '管理',
@@ -46,7 +65,7 @@ return [
 
     'edit_fields' => [
         'name' => [
-            'title' => '标示（请慎重修改）',
+            'title' => '标示',
 
             // 表单条目标题旁的『提示信息』
             'hint' => '修改权限标识会影响代码的调用，请不要轻易更改。'
@@ -55,6 +74,11 @@ return [
             'type' => 'relationship',
             'title' => '角色',
             'name_field' => 'name',
+        ],
+        'day' => [
+            'title' => '多少天会员',
+//            'title' => '角色',
+//            'name_field' => 'name',
         ],
     ],
 

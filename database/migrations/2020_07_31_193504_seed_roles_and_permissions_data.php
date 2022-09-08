@@ -16,9 +16,9 @@ class SeedRolesAndPermissionsData extends Migration
         app(Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
 
         // 先创建权限
-        Permission::create(['name' => 'manage_contents']);
-        Permission::create(['name' => 'manage_users']);
-        Permission::create(['name' => 'edit_settings']);
+        Permission::create(['name' => 'manage_contents', 'day' => 10]);
+        Permission::create(['name' => 'manage_users', 'day' => 20]);
+        Permission::create(['name' => 'edit_settings', 'day' => 30]);
 
         // 创建站长角色，并赋予权限
         $founder = Role::create(['name' => 'Founder']);

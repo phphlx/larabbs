@@ -89,6 +89,18 @@ return [
             // 关联模型的字段，用来做关联显示
             'name_field' => 'name',
         ],
+        'permissions' => [
+            'title'      => '用户权限',
+
+            // 指定数据的类型为关联模型
+            'type'       => 'relationship',
+
+            // 关联模型的字段，用来做关联显示
+            'name_field' => 'name',
+        ],
+        'money' => [
+            'title' => '金额',
+        ],
     ],
 
     // 『数据过滤』设置

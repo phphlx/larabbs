@@ -51,6 +51,9 @@ return array(
             'settings.site',
             'links',
         ],
+        '订单记录' => [
+            'records',
+        ]
     ],
 
     /*

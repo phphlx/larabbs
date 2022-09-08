@@ -37,7 +37,7 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
 
     protected $fillable = [
         'name', 'phone', 'email', 'password', 'introduction', 'avatar',
-        'weixin_openid', 'weixin_unionid', 'registration_id', 'weixin_session_key', 'weapp_openid',
+        'weixin_openid', 'weixin_unionid', 'registration_id', 'weixin_session_key', 'weapp_openid', 'money',
     ];
 
     protected $hidden = [
@@ -46,6 +46,8 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'start_at' => 'datetime',
+        'end_at' => 'datetime',
     ];
 
     public function videos()
@@ -56,6 +58,11 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
     public function topics()
     {
         return $this->hasMany(Topic::class);
+    }
+
+    public function records()
+    {
+        return $this->hasMany(Record::class);
     }
 
     public function isAuthorOf($model)
