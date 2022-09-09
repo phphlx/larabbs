@@ -22,15 +22,7 @@ return [
         },
         // 更新
         'update' => function ($model) {
-            if (request('id')) {
-                $role = Role::findById(request('id'));
-                if (!$role->users()->count()) {
-                    return true;
-                }
-                return false;
-            } else {
-                return true;
-            }
+            return false;
         },
         // 删除
         'delete' => function ($model) {
@@ -52,6 +44,14 @@ return [
             'sortable' => false,
             'output'   => function ($value, $model) {
                 $value = $model->user->email ? : $model->user->phone;
+                return model_link($value, $model->user);
+            },
+        ],
+        'admin' => [
+            'title'    => '管理员',
+            'sortable' => false,
+            'output'   => function ($value, $model) {
+                $value = $model->admin->email ? : $model->admin->phone;
                 return model_link($value, $model->user);
             },
         ],

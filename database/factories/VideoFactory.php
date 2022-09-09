@@ -19,10 +19,10 @@ $factory->define(\App\Models\Video::class, function (Faker $faker) use ($avatars
     return [
         'user_id' => random_int(1, 10),
         'title' => $faker->title,
-        'video' => $faker->randomElement($avatars),
+        'video' => config('app.url') . '/uploads/videos/videos/202209/09/1_1662710698_odnCVkXQPM.mp4',
         'intro' => $faker->sentence,
         'qrcode' => $faker->randomElement($avatars),
-        'time' => random_int(10, 30),
+        'time' => random_int(999, 1000),
         'share_title' => $faker->title,
         'share_img' => $faker->randomElement($avatars),
         'created_at' => $date_time,

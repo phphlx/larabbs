@@ -71,7 +71,7 @@ Route::prefix('v1')
                 ]);
                 // 视频详情
                 Route::resource('videos', 'VideosController')->only([
-                    'show'
+                    'show', 'index',
                 ]);
                 // 话题回复列表
                 Route::get('topics/{topic}/replies', 'RepliesController@index')

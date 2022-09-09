@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\Record;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 
 class UserObserver
@@ -47,6 +48,7 @@ class UserObserver
             $permission = Permission::findById($request_permissions_str);
             Record::create([
                 'user_id' => $user->id,
+                'admin_id' => Auth::id(),
                 'money' => request('money'),
             ]);
             $user->start_at = Carbon::now();
@@ -58,9 +60,10 @@ class UserObserver
             if (request()->money > 0) {
                 dump('错误, 金额不能大于 0');
                 die;
-            } else if (request()->money && request()->money <= 0) {
+            } else if (request()->money !== false && request()->money <= 0) {
                 Record::create([
                     'user_id' => $user->id,
+                    'admin_id' => Auth::id(),
                     'money' => request('money'),
                 ]);
                 $user->start_at = null;

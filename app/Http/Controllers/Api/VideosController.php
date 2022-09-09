@@ -15,11 +15,13 @@ class VideosController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(VideoQuery $query)
     {
-        //
+        $videos = $query->paginate();
+
+        return VideoResource::collection($videos);
     }
 
     public function userIndex(Request $request, User $user, VideoQuery $query)

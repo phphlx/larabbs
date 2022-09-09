@@ -10,6 +10,7 @@ class CreateRecordsTable extends Migration
 		Schema::create('records', function(Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('admin_id');
             $table->decimal('money');
             $table->timestamps();
         });

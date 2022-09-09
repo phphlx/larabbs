@@ -19,6 +19,26 @@ return [
         return Auth::user()->can('manage_users');
     },
 
+    // 对 CRUD 动作的单独权限控制，通过返回布尔值来控制权限。
+    'action_permissions' => [
+        // 控制『新建按钮』的显示
+        'create' => function ($model) {
+            return true;
+        },
+        // 更新
+        'update' => function ($model) {
+            return true;
+        },
+        // 删除
+        'delete' => function ($model) {
+            return false;
+        },
+        // 允许查看
+        'view' => function ($model) {
+            return true;
+        },
+    ],
+
     // 字段负责渲染『数据表格』，由无数的『列』组成，
     'columns' => [
 
@@ -49,6 +69,20 @@ return [
 
         'email' => [
             'title' => '邮箱',
+        ],
+
+        'permissions' => [
+            'title'    => '权限',
+            'sortable' => false,
+            'output'   => function ($value, $model) {
+                $user_permissions_arr = $model->permissions()->pluck('id');
+                if ($user_permissions_arr->count() == 1) {
+                    $permission = \Spatie\Permission\Models\Permission::findById($user_permissions_arr[0]);
+                    return $permission->name;
+                } else {
+                    return '';
+                }
+            },
         ],
 
         'operation' => [
