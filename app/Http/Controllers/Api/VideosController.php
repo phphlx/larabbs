@@ -39,6 +39,8 @@ class VideosController extends Controller
      */
     public function store(VideoRequest $request, Video $video)
     {
+        $this->authorize('store', $video);
+
         $video->title = $request->title;
         $video->video = $request->video[0]['url'];
         $video->intro = $request->intro;

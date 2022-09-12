@@ -20,13 +20,18 @@ class VideoPolicy
         //
     }
 
+    public function store(User $user)
+    {
+        return $user->isMember();
+    }
+
     public function update(User $user, Video $video)
     {
-        return $user->isAuthorOf($video);
+        return $user->isAuthorOf($video) && $user->isMember();
     }
 
     public function destroy(User $user, Video $video)
     {
-        return $user->isAuthorOf($video);
+        return $user->isAuthorOf($video) && $user->isMember();
     }
 }

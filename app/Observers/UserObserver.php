@@ -60,7 +60,7 @@ class UserObserver
             if (request()->money > 0) {
                 dump('错误, 金额不能大于 0');
                 die;
-            } else if (request()->money !== false && request()->money <= 0) {
+            } else if (!is_null(request()->money) && request()->money <= 0) {
                 Record::create([
                     'user_id' => $user->id,
                     'admin_id' => Auth::id(),

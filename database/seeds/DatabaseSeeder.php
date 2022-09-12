@@ -10,8 +10,11 @@ class DatabaseSeeder extends Seeder
         $this->call(TopicsTableSeeder::class);
         $this->call(RepliesTableSeeder::class);
         $this->call(LinksTableSeeder::class);
-        $this->call(VideosTableSeeder::class);
-        $this->call(QunsTableSeeder::class);
+        if (app()->isLocal()) {
+            $this->call(VideosTableSeeder::class);
+            $this->call(QunsTableSeeder::class);
+        }
         $this->call(RecordsTableSeeder::class);
+        $this->call(ArticlesTableSeeder::class);
     }
 }

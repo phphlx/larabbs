@@ -71,6 +71,10 @@ return [
             'title' => '邮箱',
         ],
 
+        'phone' => [
+            'title' => '手机号',
+        ],
+
         'permissions' => [
             'title'    => '权限',
             'sortable' => false,
@@ -133,7 +137,7 @@ return [
             'name_field' => 'name',
         ],
         'money' => [
-            'title' => '金额',
+            'title' => '金额 (移除权限金额必须为负值或 0',
         ],
     ],
 

@@ -59,6 +59,10 @@ Route::prefix('v1')
                 // 分类列表
                 Route::get('categories', 'CategoriesController@index')
                     ->name('categories.index');
+                // 文章列表
+                Route::resource('articles', 'ArticlesController')->only([
+                    'index',
+                ]);
                 // 某个用户发布的话题
                 Route::get('users/{user}/topics', 'TopicsController@userIndex')
                     ->name('users.topics.index');

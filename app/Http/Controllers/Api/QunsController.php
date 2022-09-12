@@ -37,6 +37,8 @@ class QunsController extends Controller
      */
     public function store(QunRequest $request, Qun $qun)
     {
+        $this->authorize('store', $qun);
+
         $qun->name = $request->name;
         $qun->intro = $request->intro;
         $qun->avatar = $request->avatar[0]['url'];
