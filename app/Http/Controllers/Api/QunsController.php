@@ -41,6 +41,7 @@ class QunsController extends Controller
 
         $qun->name = $request->name;
         $qun->intro = $request->intro;
+        $qun->type = $request->type;
         $qun->avatar = $request->avatar[0]['url'];
         $qun->qrcode = $request->qrcode[0]['url'];
         $qun->num = $request->num;
@@ -78,6 +79,7 @@ class QunsController extends Controller
 
         $qun->name = $request->name;
         $qun->intro = $request->intro;
+        $qun->type = $request->type;
         $qun->avatar = $request->avatar[0]['url'];
         $qun->qrcode = $request->qrcode[0]['url'];
         $qun->num = $request->num;

@@ -43,9 +43,8 @@ return array(
             'permissions',
         ],
         '内容管理' => [
-            'categories',
-            'topics',
-            'replies',
+            'videos',
+            'quns'
         ],
         '站点管理' => [
             'settings.site',

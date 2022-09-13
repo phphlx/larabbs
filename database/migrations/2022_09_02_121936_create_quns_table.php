@@ -13,6 +13,7 @@ class CreateQunsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('intro');
+            $table->tinyInteger('type');
             $table->string('avatar');
             $table->string('qrcode');
             $table->unsignedInteger('num');

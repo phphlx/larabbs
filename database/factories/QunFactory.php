@@ -20,6 +20,7 @@ $factory->define(\App\Models\Qun::class, function (Faker $faker) use ($avatars) 
         'user_id' => random_int(1, 10),
         'name' => $faker->name,
         'intro' => $faker->sentence,
+        'type' => random_int(1, 2),
         'avatar' => $faker->randomElement($avatars),
         'qrcode' => $faker->randomElement($avatars),
         'num' => random_int(100, 200),

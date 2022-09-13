@@ -20,6 +20,7 @@ class QunResource extends JsonResource
             'user' => new UserResource($this->whenLoaded('user')),
             'name' => $this->name,
             'intro' => $this->intro,
+            'type' => $this->type,
             'avatar' => [['url' => $this->avatar]],
             'qrcode' => [['url' => str_replace(['https', 'http'], ['http', 'https'], $this->qrcode)]],
             'num' => $this->num,

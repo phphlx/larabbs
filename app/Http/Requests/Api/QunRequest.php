@@ -29,6 +29,7 @@ class QunRequest extends FormRequest
                 return [
                     'name' => 'required|string',
                     'intro' => 'required|string',
+                    'type' => 'required',
                     'avatar' => 'required',
                     'qrcode' => 'required',
                     'num' => 'required',
