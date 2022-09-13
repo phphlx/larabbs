@@ -24,7 +24,7 @@ class UserResource extends JsonResource
         $data['last_day'] = $this->resource->end_at > Carbon::now()
             ? $this->resource->end_at->diffForHumans()
             : 0;
-
+        unset($data['weixin_session_key']);
         return $data;
     }
 

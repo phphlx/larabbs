@@ -19,6 +19,8 @@ class SeedRolesAndPermissionsData extends Migration
         Permission::create(['name' => 'manage_contents', 'day' => 10]);
         Permission::create(['name' => 'manage_users', 'day' => 20]);
         Permission::create(['name' => 'edit_settings', 'day' => 30]);
+        Permission::create(['name' => '尊享Vip半年', 'day' => 186]);
+        Permission::create(['name' => '尊享Vip永久', 'day' => 3650]);
 
         // 创建站长角色，并赋予权限
         $founder = Role::create(['name' => 'Founder']);

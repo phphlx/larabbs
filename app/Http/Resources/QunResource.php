@@ -9,7 +9,7 @@ class QunResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -21,7 +21,7 @@ class QunResource extends JsonResource
             'name' => $this->name,
             'intro' => $this->intro,
             'avatar' => [['url' => $this->avatar]],
-            'qrcode' => [['url' => $this->qrcode]],
+            'qrcode' => [['url' => str_replace(['https', 'http'], ['http', 'https'], $this->qrcode)]],
             'num' => $this->num,
             'shareTitle' => $this->share_title,
             'shareImg' => [['url' => $this->share_img]],

@@ -32,6 +32,9 @@ class VideoRequest extends FormRequest
                     'intro' => 'required|string',
                     'qrcode' => 'required',
                     'time' => 'required',
+                    'type' => 'required',
+                    'link' => 'nullable',
+                    'btnText' => 'nullable',
                     'shareTitle' => 'required|string',
                     'shareImg' => 'required',
                 ];

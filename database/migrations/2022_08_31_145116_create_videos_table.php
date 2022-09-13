@@ -21,6 +21,9 @@ class CreateVideosTable extends Migration
             $table->text('intro');
             $table->string('qrcode');
             $table->integer('time');
+            $table->tinyInteger('type');
+            $table->string('link')->nullable();
+            $table->string('btn_text')->nullable();
             $table->string('share_title');
             $table->string('share_img');
             $table->timestamps();
