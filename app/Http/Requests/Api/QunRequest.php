@@ -33,6 +33,7 @@ class QunRequest extends FormRequest
                     'avatar' => 'required',
                     'qrcode' => 'required',
                     'num' => 'required',
+                    'btnText' => 'nullable',
                     'shareTitle' => 'required|string',
                     'shareImg' => 'required',
                 ];

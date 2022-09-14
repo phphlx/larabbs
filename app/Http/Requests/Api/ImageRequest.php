@@ -14,7 +14,7 @@ class ImageRequest extends FormRequest
         if ($this->type == 'avatar') {
             $rules['image'] = 'required|mimes:jpeg,bmp,png,gif|dimensions:min_width=200,min_height=200';
         } else if ($this->type === 'video') {
-            $rules['video'] = 'required|mimes:mp4,flv,m3u8,ts,3gp,mov,avi,wmv|max:61440';
+            $rules['video'] = 'required|mimes:mp4,flv,m3u8,ts,3gp,mov,avi,wmv|max:20480';
         } else {
             $rules['image'] = 'required|mimes:jpeg,bmp,png,gif';
         }
@@ -26,7 +26,7 @@ class ImageRequest extends FormRequest
     {
         return [
             'image.dimensions' => '图片的清晰度不够，宽和高需要 200px 以上',
-            'video.max' => '视频大小不能超过 60M',
+            'video.max' => '视频大小不能超过 20M',
         ];
     }
 }
