@@ -15,7 +15,7 @@ class UserRequest extends FormRequest
         switch($this->method()) {
         case 'POST':
             return [
-                'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/',
+                'name' => 'required',
                 'password' => 'required|string|min:6',
                 'email'=>'nullable|email|unique:users,email',
                 'phone' => 'nullable|digits:11|unique:users,phone'
@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
             $userId = auth('api')->id();
 
             return [
-                'name' => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$/',
+                'name' => 'between:3,25',
                 'email'=>'required_without:phone|nullable|email|unique:users,email,'.$userId,
                 'phone'=>[
                     'required_without:email', 'nullable', 'digits: 11', 'unique:users,phone,' . $userId,

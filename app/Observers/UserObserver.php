@@ -53,6 +53,7 @@ class UserObserver
             ]);
             $user->start_at = Carbon::now();
             $user->end_at = Carbon::now()->addDays($permission->day);
+            $user->email = $user->email ?: null;
 //            dump(4, $permission->day);
         }
         // 取消权限 添加记录
@@ -68,7 +69,7 @@ class UserObserver
                 ]);
                 $user->start_at = null;
                 $user->end_at = null;
-
+                $user->email = $user->email ?: null;
                 $user->money = null;
             }
         }
