@@ -20,6 +20,8 @@ $factory->define(\App\Models\Video::class, function (Faker $faker) use ($avatars
         'user_id' => random_int(1, 10),
         'title' => $faker->title,
         'video' => config('app.url') . '/uploads/videos/videos/202209/09/1_1662710698_odnCVkXQPM.mp4',
+        'ad_title' => '@' . substr($faker->word(), 0, 10),
+        'ad_content' => $faker->text(random_int(20, 34)),
         'intro' => $faker->sentence,
         'qrcode' => $faker->randomElement($avatars),
         'time' => random_int(999, 1000),

@@ -29,6 +29,8 @@ class VideoRequest extends FormRequest
                 return [
                     'title' => 'required|string',
                     'video' => 'required',
+                    'adTitle' => 'required',
+                    'adContent' => 'required',
                     'intro' => 'required|string',
                     'qrcode' => 'required',
                     'time' => 'required',

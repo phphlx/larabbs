@@ -20,6 +20,8 @@ class VideoResource extends JsonResource
             'user' => new UserResource($this->whenLoaded('user')),
             'title' => $this->title,
             'video' => [['url' => $this->video]],
+            'adTitle' => $this->ad_title,
+            'adContent' => $this->ad_content,
             'intro' => $this->intro,
             'qrcode' => [['url' => str_replace(['https', 'http'], ['http', 'https'], $this->qrcode)]],
             'time' => $this->time,

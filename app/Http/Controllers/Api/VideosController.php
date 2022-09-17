@@ -43,6 +43,8 @@ class VideosController extends Controller
 
         $video->title = $request->title;
         $video->video = $request->video[0]['url'];
+        $video->ad_title = $request->adTitle;
+        $video->ad_content = $request->adContent;
         $video->intro = $request->intro;
         $video->qrcode = $request->qrcode[0]['url'];
         $video->time = $request->time;
@@ -83,6 +85,8 @@ class VideosController extends Controller
 
         $video->title = $request->title;
         $video->video = $request->video[0]['url'];
+        $video->ad_title = $request->adTitle;
+        $video->ad_content = $request->adContent;
         $video->intro = $request->intro;
         $video->qrcode = $request->qrcode[0]['url'];
         $video->time = $request->time;
