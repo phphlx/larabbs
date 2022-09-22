@@ -59,8 +59,7 @@ class UserObserver
         // 取消权限 添加记录
         if (!$request_permissions_str && $user_permissions_arr->count()) {
             if (request()->money > 0) {
-                dump('错误, 金额不能大于 0');
-                die;
+
             } else if (!is_null(request()->money) && request()->money <= 0) {
                 Record::create([
                     'user_id' => $user->id,
