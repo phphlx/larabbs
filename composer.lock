@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f0393bd2868c27aad3a1bb0ce91a874",
+    "content-hash": "1de455875a22486ab465d4322113f2d5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -200,17 +200,17 @@
             "time": "2021-10-17T02:44:05+00:00"
         },
         {
-            "name": "ckeditor/ckeditor",
-            "version": "4.19.0",
+            "name": "dcat/laravel-admin",
+            "version": "2.2.2-beta",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ckeditor/ckeditor4-releases.git",
-                "reference": "db9342ad88e04de66dcf9b132ff41061727778c5"
+                "url": "https://github.com/jqhph/dcat-admin.git",
+                "reference": "150f46486871b5ca57992f7eed3787e0c1c49bef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/db9342ad88e04de66dcf9b132ff41061727778c5",
-                "reference": "db9342ad88e04de66dcf9b132ff41061727778c5",
+                "url": "https://api.github.com/repos/jqhph/dcat-admin/zipball/150f46486871b5ca57992f7eed3787e0c1c49bef",
+                "reference": "150f46486871b5ca57992f7eed3787e0c1c49bef",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -219,39 +219,60 @@
                     }
                 ]
             },
+            "require": {
+                "doctrine/dbal": "^2.6|^3.0",
+                "laravel/framework": "~5.5|~6.0|~7.0|~8.0|~9.0",
+                "php": ">=7.1.0",
+                "spatie/eloquent-sortable": "3.*|4.*"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.4",
+                "laravel/dusk": "~5.9|~6",
+                "mockery/mockery": "^1.0",
+                "phpstan/phpstan": "^0.12.0",
+                "phpunit/phpunit": "^7.5|~9"
+            },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dcat\\Admin\\AdminServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Support/helpers.php"
+                ],
+                "psr-4": {
+                    "Dcat\\Admin\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0+",
-                "LGPL-2.1+",
-                "MPL-1.1+"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "CKSource",
-                    "homepage": "https://cksource.com"
+                    "name": "jqh",
+                    "email": "841324345@qq.com"
                 }
             ],
-            "description": "JavaScript WYSIWYG web text editor.",
-            "homepage": "https://ckeditor.com/ckeditor-4/",
+            "description": "dcat admin",
+            "homepage": "https://github.com/jqhph/dcat-admin",
             "keywords": [
-                "CKEditor",
-                "ckeditor4",
-                "editor",
-                "fckeditor",
-                "html",
-                "javascript",
-                "richtext",
-                "text",
-                "wysiwyg"
+                "admin",
+                "dcat",
+                "form",
+                "grid",
+                "laravel",
+                "laravel admin"
             ],
             "support": {
-                "forum": "https://stackoverflow.com/tags/ckeditor",
-                "issues": "https://github.com/ckeditor/ckeditor4/issues",
-                "source": "https://github.com/ckeditor/ckeditor4",
-                "wiki": "https://ckeditor.com/docs/ckeditor4/latest/"
+                "issues": "https://github.com/jqhph/dcat-admin/issues",
+                "source": "https://github.com/jqhph/dcat-admin/tree/2.2.2-beta"
             },
-            "time": "2022-05-18T10:49:44+00:00"
+            "time": "2022-06-27T14:42:39+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -4375,6 +4396,80 @@
             "time": "2021-09-25T23:10:38+00:00"
         },
         {
+            "name": "spatie/eloquent-sortable",
+            "version": "3.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/eloquent-sortable.git",
+                "reference": "b06fa886559f8d40e31c8a69fd32bd45401dc5da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/eloquent-sortable/zipball/b06fa886559f8d40e31c8a69fd32bd45401dc5da",
+                "reference": "b06fa886559f8d40e31c8a69fd32bd45401dc5da",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\EloquentSortable\\EloquentSortableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\EloquentSortable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be"
+                }
+            ],
+            "description": "Sortable behaviour for eloquent models",
+            "homepage": "https://github.com/spatie/eloquent-sortable",
+            "keywords": [
+                "behaviour",
+                "eloquent",
+                "laravel",
+                "model",
+                "sort",
+                "sortable"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/eloquent-sortable/issues",
+                "source": "https://github.com/spatie/eloquent-sortable/tree/3.11.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-01-18T00:32:12+00:00"
+        },
+        {
             "name": "spatie/laravel-permission",
             "version": "3.18.0",
             "source": {
@@ -4531,77 +4626,6 @@
                 }
             ],
             "time": "2020-09-08T22:41:35+00:00"
-        },
-        {
-            "name": "summerblue/administrator",
-            "version": "7.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/summerblue/administrator.git",
-                "reference": "59d52010a36cb268571475011421cc57a3615f3f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/summerblue/administrator/zipball/59d52010a36cb268571475011421cc57a3615f3f",
-                "reference": "59d52010a36cb268571475011421cc57a3615f3f",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "ckeditor/ckeditor": "4.*",
-                "laravel/framework": "7.*",
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~5.7.12"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Frozennode\\Administrator\\AdministratorServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Frozennode\\Administrator": "src/"
-                },
-                "classmap": [
-                    "src/controllers"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Summer",
-                    "email": "summer@learnku.com"
-                }
-            ],
-            "description": "A database interface package for Laravel, modified!",
-            "homepage": "https://github.com/summerblue/administrator",
-            "keywords": [
-                "admin",
-                "administrator",
-                "cms",
-                "database",
-                "laravel",
-                "laravel-administrator"
-            ],
-            "support": {
-                "issues": "https://github.com/summerblue/administrator/issues",
-                "source": "https://github.com/summerblue/administrator/tree/master"
-            },
-            "time": "2020-07-31T12:07:22+00:00"
         },
         {
             "name": "summerblue/laravel-active",
