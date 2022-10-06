@@ -5,14 +5,14 @@ namespace App\Models;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Database\Eloquent\Model;
 
-class Qun extends Model
+class Salesperson extends Model
 {
     use HasDateTimeFormatter;
 
-    protected $fillable = ['title'];
+    protected $fillable = ['name'];
 
-    public function user()
+    public function records()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Record::class);
     }
 }

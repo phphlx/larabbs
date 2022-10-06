@@ -12,6 +12,12 @@ Route::group([
     'middleware' => config('admin.route.middleware'),
 ], function (Router $router) {
 
-    $router->get('/', 'HomeController@index');
-
+//    $router->get('home', 'HomeController@index');
+    $router->get('/', 'UserController@index');
+    $router->resource('users', 'UserController')->only(['index', 'create', 'store', 'edit', 'update']);
+    $router->resource('permissions', 'PermissionController')->except(['show']);
+    $router->resource('records', 'RecordController')->only(['index']);
+    $router->resource('salespeople', 'SalespersonController')->except('show');
+    $router->resource('quns', 'QunController');
+    $router->resource('videos', 'VideoController');
 });
