@@ -77,7 +77,8 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
 
     public function isMember()
     {
-        return $this->end_at > Carbon::now();
+        return $this->permissions()->exists() && $this->start_at->addDays($this->permissions()->latest('id')->first()
+                ->day) > Carbon::now();
     }
 
     public function replies()

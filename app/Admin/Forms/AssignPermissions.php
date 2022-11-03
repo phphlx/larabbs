@@ -31,8 +31,7 @@ class AssignPermissions extends Form
             return $this->response()
                 ->error('当前会员还在有效期内, 不可重复开通.');
         }
-        $permissions = Permission::findById($permissions_id);
-        $user->givePermissionTo($permissions->name);
+        $user->givePermissionTo($permissions_id);
         Record::create([
             'user_id' => $user_id,
             'admin_id' => \Admin::user()->id,
@@ -41,7 +40,6 @@ class AssignPermissions extends Form
         ]);
         $user->money = $money;
         $user->start_at = Carbon::now();
-        $user->end_at = Carbon::now()->addDays($permissions->day);
 
         $user->save();
 

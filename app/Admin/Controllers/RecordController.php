@@ -37,7 +37,7 @@ class RecordController extends AdminController
             $grid->column('created_at');
             $grid->column('updated_at');
 
-            $grid->model()->orderByDesc('id')->with(['user', 'admin', 'salesperson']);
+            $grid->model()->orderByDesc('created_at')->with(['user', 'admin', 'salesperson']);
 
             $grid->disableBatchActions();
             $grid->disableActions();
