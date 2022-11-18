@@ -140,6 +140,10 @@ class AuthorizationsController extends Controller
 
     public function destroy()
     {
+        $user =auth('api')->user();
+        if ($user) {
+            $user->update(['weapp_openid' => null]);
+        }
         auth('api')->logout();
         return response(null, 204);
     }
