@@ -53,9 +53,10 @@ class VideoController extends AdminController
                     $query->whereHas('user', function ($query) {
                         $query->where('name', 'like', "%{$this->input}%")
                             ->orWhere('email', 'like', "%{$this->input}%")
-                            ->orWhere('phone', 'like', "%{$this->input}%");
+                            ->orWhere('phone', 'like', "%{$this->input}%")
+                            ->orWhere('title', 'like', "%{$this->input}%");
                     });
-                })->placeholder('输入用户名, 邮箱, 手机号')->width(2);
+                })->placeholder('输入用户名, 邮箱, 手机号, 标题')->width(2);
             });
         });
     }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Salesperson extends Model
 {
-    use HasDateTimeFormatter;
+//    use HasDateTimeFormatter;
 
     protected $fillable = ['name'];
 

@@ -80,10 +80,15 @@ class UsersController extends Controller
     {
         $user = $request->user();
 
-        $attributes = $request->only(['name', 'email', 'phone', 'introduction', 'registration_id']);
+        $attributes = $request->only(['name', 'email', 'phone', 'password', 'introduction', 'registration_id']);
         if (!$request->email) {
             unset($attributes['name']);
         }
+
+        if ($request->password) {
+            $attributes['password'] = bcrypt($request->password);
+        }
+
         if ($request->avatar_image_id) {
             $image = Image::find($request->avatar_image_id);
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    use HasDateTimeFormatter;
+//    use HasDateTimeFormatter;
 
     public function user()
     {

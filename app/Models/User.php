@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Auth;
 use Carbon\Carbon;
-use Dcat\Admin\Traits\HasDateTimeFormatter;
+//use Dcat\Admin\Traits\HasDateTimeFormatter;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
     use HasRoles;
     use MustVerifyEmailTrait;
     use Traits\ActiveUserHelper;
-    use HasDateTimeFormatter;
+//    use HasDateTimeFormatter;
 
     use Notifiable {
         notify as protected laravelNotify;

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Qun extends Model
 {
-    use HasDateTimeFormatter;
+//    use HasDateTimeFormatter;
 
     protected $fillable = ['title'];
 
