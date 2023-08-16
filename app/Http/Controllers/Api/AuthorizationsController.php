@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\WeappAuthorizationRequest;
 use App\Models\User;
-use Illuminate\Support\Arr;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Overtrue\Socialite\AccessToken;
 use Illuminate\Auth\AuthenticationException;
 use App\Http\Requests\Api\AuthorizationRequest;
@@ -49,7 +48,7 @@ class AuthorizationsController extends Controller
 
             $oauthUser = $driver->user($accessToken);
         } catch (\Exception $e) {
-           throw new AuthenticationException('参数错误，未获取用户信息');
+            throw new AuthenticationException('参数错误，未获取用户信息');
         }
 
         switch ($type) {
@@ -132,6 +131,64 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
+    public function tiktokStore(WeappAuthorizationRequest $request)
+    {
+        $code = $request->code;
+
+        $appid = config('tiktok.tiktok.app_id');
+        $secret = config('tiktok.tiktok.secret');
+
+        $url = 'https://developer.toutiao.com/api/apps/v2/jscode2session';
+
+        $response = Http::post($url, [
+            'appid' => $appid,
+            'secret' => $secret,
+            'code' => $code
+        ]);
+        // 如果结果错误, 说明 code 已过期或不正确, 返回 401 错误
+        if ($response['err_no']) {
+            throw new AuthenticationException('code 不正确');
+        }
+        $data = $response['data'];
+
+        // 找到 openid 对应的用户
+        $user = User::where('tiktok_openid', $data['openid'])->first();
+        $attributes['tiktok_session_key'] = $data['session_key'];
+
+        if (!$user) { // 未找到对应用户则需要提交用户名密码进行用户绑定
+            // 如果未提交用户名密码, 403 错误提示
+            if (!$request->username) {
+                throw new AuthenticationException('用户不存在');
+            }
+
+            $username = $request->username;
+            // 用户名可以是邮箱或者电话
+            filter_var($username, FILTER_VALIDATE_EMAIL) ?
+                $credentials['email'] = $username :
+                $credentials['phone'] = $username;
+
+            $credentials['password'] = $request->password;
+
+            // 验证用户名密码是否正确
+            if (!auth('api')->once($credentials)) {
+                throw new AuthenticationException('用户名或密码错误');
+            }
+
+            // 获取对应的用户
+            $user = auth('api')->getUser();
+            $attributes['tiktok_unionid'] = $data['unionid'];
+            $attributes['tiktok_openid'] = $data['openid'];
+        }
+
+        // 更新用户数据
+        $user->update($attributes);
+
+        // 为对应用户创建 JWT
+        $token = auth('api')->login($user);
+
+        return $this->respondWithToken($token)->setStatusCode(201);
+    }
+
     public function update()
     {
         $token = auth('api')->refresh();
@@ -140,9 +197,19 @@ class AuthorizationsController extends Controller
 
     public function destroy()
     {
-        $user =auth('api')->user();
+        $user = auth('api')->user();
         if ($user) {
             $user->update(['weapp_openid' => null]);
+        }
+        auth('api')->logout();
+        return response(null, 204);
+    }
+
+    public function tiktokDestroy()
+    {
+        $user = auth('api')->user();
+        if ($user) {
+            $user->update(['tiktok_openid' => null, 'tiktok_unionid' => null, 'tiktok_session_key' => null]);
         }
         auth('api')->logout();
         return response(null, 204);
