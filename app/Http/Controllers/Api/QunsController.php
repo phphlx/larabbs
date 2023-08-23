@@ -24,7 +24,8 @@ class QunsController extends Controller
 
     public function userIndex(Request $request, User $user, QunQuery $query)
     {
-        $quns = $query->where('user_id', $user->id)->paginate();
+        $from = $request->from ?: 0;
+        $quns = $query->where('user_id', $user->id)->where('from', $from)->paginate();
 
         return QunResource::collection($quns);
     }
@@ -49,6 +50,7 @@ class QunsController extends Controller
         $qun->share_title = $request->shareTitle;
         $qun->share_img = $request->shareImg[0]['url'];
         $qun->user_id = $request->user()->id;
+        $qun->from = $request->from;
         $qun->save();
 
         return new QunResource($qun);
