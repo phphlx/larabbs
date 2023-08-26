@@ -26,7 +26,8 @@ class VideosController extends Controller
 
     public function userIndex(Request $request, User $user, VideoQuery $query)
     {
-        $videos = $query->where('user_id', $user->id)->paginate();
+        $from = $request->from ?: 0;
+        $videos = $query->where([['user_id', $user->id], ['from', $from]])->paginate();
 
         return VideoResource::collection($videos);
     }
@@ -54,6 +55,7 @@ class VideosController extends Controller
         $video->share_title = $request->shareTitle;
         $video->share_img = $request->shareImg[0]['url'];
         $video->user_id = $request->user()->id;
+        $video->from = $request->from;
         $video->save();
 
         return new VideoResource($video);
@@ -96,6 +98,7 @@ class VideosController extends Controller
         $video->share_title = $request->shareTitle;
         $video->share_img = $request->shareImg[0]['url'];
         $video->user_id = $request->user()->id;
+        $video->from = $request->from;
         $video->save();
 
         return new VideoResource($video);
