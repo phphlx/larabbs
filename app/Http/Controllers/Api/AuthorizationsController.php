@@ -141,8 +141,13 @@ class AuthorizationsController extends Controller
     {
         $code = $request->code;
 
-        $appid = config('tiktok.tiktok.app_id');
-        $secret = config('tiktok.tiktok.secret');
+        if ($request->program === 'feiliya') { // 菲莉亚
+            $appid = config('tiktok.feiliya.app_id');
+            $secret = config('tiktok.feiliya.secret');
+        } else { // 三叉戟
+            $appid = config('tiktok.tiktok.app_id');
+            $secret = config('tiktok.tiktok.secret');
+        }
 
         $url = 'https://developer.toutiao.com/api/apps/v2/jscode2session';
 
