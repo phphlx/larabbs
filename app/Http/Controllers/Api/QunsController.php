@@ -50,7 +50,7 @@ class QunsController extends Controller
         $qun->share_title = $request->shareTitle;
         $qun->share_img = $request->shareImg[0]['url'];
         $qun->user_id = $request->user()->id;
-        $qun->from = $request->from;
+        $qun->from = $request->from ?: 0;
         $qun->save();
 
         return new QunResource($qun);
@@ -90,6 +90,7 @@ class QunsController extends Controller
         $qun->share_title = $request->shareTitle;
         $qun->share_img = $request->shareImg[0]['url'];
         $qun->user_id = $request->user()->id;
+        $qun->from = $request->from ?: 0;
         $qun->save();
 
         return new QunResource($qun);

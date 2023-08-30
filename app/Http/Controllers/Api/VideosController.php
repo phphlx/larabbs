@@ -55,7 +55,7 @@ class VideosController extends Controller
         $video->share_title = $request->shareTitle;
         $video->share_img = $request->shareImg[0]['url'];
         $video->user_id = $request->user()->id;
-        $video->from = $request->from;
+        $video->from = $request->from ?: 0;
         $video->save();
 
         return new VideoResource($video);
@@ -98,7 +98,7 @@ class VideosController extends Controller
         $video->share_title = $request->shareTitle;
         $video->share_img = $request->shareImg[0]['url'];
         $video->user_id = $request->user()->id;
-        $video->from = $request->from;
+        $video->from = $request->from ?: 0;
         $video->save();
 
         return new VideoResource($video);

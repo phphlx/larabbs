@@ -40,8 +40,14 @@ class UsersController extends Controller
     public function weappStore(UserRequest $request)
     {
         // 获取微信的 openid 和 session_key
-        $miniProgram = \EasyWeChat::miniProgram();
-        $data = $miniProgram->auth->session($request->code);
+        if ($request->program === 'yinghuochong') {
+            $miniApp = app('wechat.mini_program.yinghuochong');
+        } else if ($request->program === 'zhensheng') {
+            $miniApp = app('wechat.mini_program.zhensheng');
+        } else { // 谨耀商
+            $miniApp = app('wechat.mini_program');
+        }
+        $data = $miniApp->auth->session($request->code);
 
         if (isset($data['errcode'])) {
             throw new AuthenticationException('code 不正确');

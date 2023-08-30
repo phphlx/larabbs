@@ -84,7 +84,13 @@ class AuthorizationsController extends Controller
         $code = $request->code;
 
         // 根据 code 获取微信 openid 和 session_key
-        $miniApp = app('wechat.mini_program');
+        if ($request->program === 'yinghuochong') {
+            $miniApp = app('wechat.mini_program.yinghuochong');
+        } else if ($request->program === 'zhensheng') {
+            $miniApp = app('wechat.mini_program.zhensheng');
+        } else { // 谨耀商
+            $miniApp = app('wechat.mini_program');
+        }
         $data = $miniApp->auth->session($code);
 
         // 如果结果错误, 说明 code 已过期或不正确, 返回 401 错误
