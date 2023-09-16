@@ -123,6 +123,34 @@ class UsersController extends Controller
         return (new UserResource($user))->showSensitiveFields();
     }
 
+    public function kuaiShouStore(UserRequest $request, User $user)
+    {
+        $response = $user->kuaiShou($request->code, $request->program);
+
+        $user = User::where('kuaishou_openid', $response['open_id'])->first();
+
+        if ($user) {
+            throw new AuthenticationException('此快手已绑定其他用户，请直接登录');
+        }
+
+        try {
+            $user = User::create([ // 创建用户
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->username,
+                'password' => $request->password,
+                'kuaishou_openid' => $response['open_id'],
+                'kuaishou_session_key' => $response['session_key'],
+            ]);
+        } catch (\Exception $e) {
+            if ($e->getCode() == 23000) {
+                throw new AuthenticationException('邮箱已存在, 请直接登录');
+            }
+        }
+
+        return (new UserResource($user))->showSensitiveFields();
+    }
+
     public function show(User $user, Request $request)
     {
         return new UserResource($user);

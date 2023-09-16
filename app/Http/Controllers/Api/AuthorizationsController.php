@@ -200,6 +200,44 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
+    public function kuaiShouStore(WeappAuthorizationRequest $request, User $user)
+    {
+        $response = $user->kuaiShou($request->code, $request->program);
+
+        $user = User::where('kuaishou_openid', $response['open_id'])->first();
+        $attributes['kuaishou_session_key'] = $response['session_key'];
+
+        if (!$user) { // 未找到对应用户则需要提交用户名密码进行用户绑定
+            if (!$request->username) { // 如果未提交用户名密码, 403 错误提示
+                throw new AuthenticationException('用户不存在');
+            }
+
+            $username = $request->username;
+            // 用户名可以是邮箱或者电话
+            filter_var($username, FILTER_VALIDATE_EMAIL)
+                ? $credentials['email'] = $username : $credentials['phone'] = $username;
+
+            $credentials['password'] = $request->password;
+
+            // 验证用户名密码是否正确
+            if (!auth('api')->once($credentials)) {
+                throw new AuthenticationException('用户名或密码错误');
+            }
+
+            // 获取对应的用户
+            $user = auth('api')->getUser();
+            $attributes['kuaishou_openid'] = $response['open_id'];
+        }
+
+        // 更新用户数据
+        $user->update($attributes);
+
+        // 为对应用户创建 JWT
+        $token = auth('api')->login($user);
+
+        return $this->respondWithToken($token)->setStatusCode(201);
+    }
+
     public function update()
     {
         $token = auth('api')->refresh();
@@ -221,6 +259,16 @@ class AuthorizationsController extends Controller
         $user = auth('api')->user();
         if ($user) {
             $user->update(['tiktok_openid' => null, 'tiktok_unionid' => null, 'tiktok_session_key' => null]);
+        }
+        auth('api')->logout();
+        return response(null, 204);
+    }
+
+    public function kuaiShouDestroy()
+    {
+        $user = auth('api')->user();
+        if ($user) {
+            $user->update(['kuaishou_openid' => null, 'kuaishou_session_key' => null]);
         }
         auth('api')->logout();
         return response(null, 204);

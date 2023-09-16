@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\CodeToSession;
 use Auth;
 use Carbon\Carbon;
 //use Dcat\Admin\Traits\HasDateTimeFormatter;
@@ -20,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
     use MustVerifyEmailTrait;
     use Traits\ActiveUserHelper;
 //    use HasDateTimeFormatter;
+    use CodeToSession;
 
     use Notifiable {
         notify as protected laravelNotify;
@@ -43,11 +45,11 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
     protected $fillable = [
         'name', 'phone', 'email', 'password', 'introduction', 'avatar', 'weixin_openid', 'weixin_unionid',
         'registration_id', 'weixin_session_key', 'weapp_openid', 'tiktok_openid', 'tiktok_session_key',
-        'tiktok_unionid', 'money',
+        'tiktok_unionid', 'money', 'kuaishou_openid', 'kuaishou_session_key',
     ];
 
     protected $hidden = [
-        'password', 'remember_token', 'weixin_openid', 'weixin_unionid', 'tiktok_openid', 'tiktok_unionid'
+        'password', 'remember_token', 'weixin_openid', 'weixin_unionid', 'tiktok_openid', 'tiktok_unionid', 'kuaishou_openid',
     ];
 
     protected $casts = [

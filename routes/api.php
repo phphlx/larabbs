@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,10 +40,16 @@ Route::prefix('v1')
                 Route::post('weapp/authorizations', [\App\Http\Controllers\Api\AuthorizationsController::class, 'weappStore'])->name('weapp.authorizations.store');
                 // 抖音小程序登录
                 Route::post('tiktok/authorizations', [\App\Http\Controllers\Api\AuthorizationsController::class, 'tiktokStore'])->name('tiktok.authorizations.store');
+                // 快手小程序登录
+                Route::post('kuaishou/authorizations', [\App\Http\Controllers\Api\AuthorizationsController::class,
+                    'kuaiShouStore'])->name('kuaishou.authorizations.store');
                 // 小程序注册
                 Route::post('weapp/users', [\App\Http\Controllers\Api\UsersController::class, 'weappStore'])->name('weapp.users.store');
                 // 抖音小程序注册
                 Route::post('tiktok/users', [\App\Http\Controllers\Api\UsersController::class, 'tiktokStore'])->name('tiktok.users.store');
+                // 快手小程序注册
+                Route::post('kuaishou/users', [\App\Http\Controllers\Api\UsersController::class, 'kuaiShouStore'])->name
+                ('kuaishou.users.store');
                 // 刷新token
                 Route::put('authorizations/current', 'AuthorizationsController@update')
                     ->name('authorizations.update');
@@ -54,6 +59,9 @@ Route::prefix('v1')
                 // 抖音删除token
                 Route::delete('tiktokAuthorizations/current', 'AuthorizationsController@tiktokDestroy')
                     ->name('tiktok.authorizations.destroy');
+                // 快手删除token
+                Route::delete('kuaishouAuthorizations/current', 'AuthorizationsController@kuaiShouDestroy')
+                    ->name('kuaishou.authorizations.destroy');
             });
 
         Route::middleware('throttle:' . config('api.rate_limits.access'))
@@ -102,7 +110,7 @@ Route::prefix('v1')
                     ->name('actived.users.index');
 
                 // 登录后可以访问的接口
-                Route::middleware('auth:api')->group(function() {
+                Route::middleware('auth:api')->group(function () {
                     // 当前登录用户信息
                     Route::get('user', 'UsersController@me')
                         ->name('user.show');
@@ -152,5 +160,5 @@ Route::prefix('v1')
                     Route::get('user/permissions', 'PermissionsController@index')
                         ->name('user.permissions.index');
                 });
-			});
+            });
     });
