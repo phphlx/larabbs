@@ -22,7 +22,6 @@ class UserResource extends JsonResource
         $data['roles'] = RoleResource::collection($this->whenloaded('roles'));
         $data['member'] = $this->isMember();
         $data['last_day'] = $this->permissions()->exists() ? $this->start_at->addDays($this->permissions()->latest('id')->first()->day)->diffForHumans() : 0;
-        unset($data['weixin_session_key']);
         return $data;
     }
 

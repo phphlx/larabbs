@@ -67,7 +67,14 @@ Route::prefix('v1')
         Route::middleware('throttle:' . config('api.rate_limits.access'))
             ->group(function () {
                 // 游客可以访问的接口
-
+                // 天气查询
+                Route::get('weather', [\App\Http\Controllers\Api\IndexsController::class, 'search'])->name('weather');
+                // 随机一言
+                Route::get('randomSentence', [\App\Http\Controllers\Api\IndexsController::class, 'randomSentence'])
+                    ->name('randomSentence');
+                // 网易云热评
+                Route::get('cloudMusicComment', [\App\Http\Controllers\Api\IndexsController::class, 'cloudMusicComment'])
+                    ->name('cloudMusicComment');
                 // 某个用户的详情
                 Route::get('users/{user}', 'UsersController@show')
                     ->name('users.show');
