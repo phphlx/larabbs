@@ -26,6 +26,7 @@ class QunResource extends JsonResource
             'num' => $this->num,
             'btnText' => $this->btn_text,
             'shareTitle' => $this->share_title,
+            'shareDesc' => $this->share_desc,
             'shareImg' => [['url' => $this->share_img]],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

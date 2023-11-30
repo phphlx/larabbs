@@ -48,6 +48,7 @@ class QunsController extends Controller
         $qun->num = $request->num;
         $qun->btn_text = $request->btnText;
         $qun->share_title = $request->shareTitle;
+        $qun->share_desc = $request->shareDesc;
         $qun->share_img = $request->shareImg[0]['url'];
         $qun->user_id = $request->user()->id;
         $qun->from = $request->from ?: 0;
@@ -88,6 +89,7 @@ class QunsController extends Controller
         $qun->num = $request->num;
         $qun->btn_text = $request->btnText;
         $qun->share_title = $request->shareTitle;
+        $qun->share_desc = $request->shareDesc;
         $qun->share_img = $request->shareImg[0]['url'];
         $qun->user_id = $request->user()->id;
         $qun->from = $request->from ?: 0;
