@@ -47,7 +47,7 @@ class UserController extends AdminController
             $grid->disableBatchActions();
 
             $permissions = Permission::pluck('name', 'id');
-            $salespeople = Salesperson::pluck('name', 'id');
+            $salespeople = Salesperson::where('enable', 1)->pluck('name', 'id');
             $grid->actions(function (Grid\Displayers\Actions $actions) use ($permissions, $salespeople) {
                 $actions->prepend(new AssignPermissions(['permissions' => $permissions, 'salespeople' => $salespeople]));
                 $actions->append('<a class="btn btn-sm btn-secondary" href="'

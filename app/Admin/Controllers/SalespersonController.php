@@ -23,6 +23,7 @@ class SalespersonController extends AdminController
             $grid->column('name');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
+            $grid->model()->where('enable', 1);
 
             $grid->disableRowSelector();
             $grid->setActionClass(Grid\Displayers\Actions::class);

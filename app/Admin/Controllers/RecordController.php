@@ -62,7 +62,7 @@ class RecordController extends AdminController
                     });
                 })->select($admin)->width(2);
 
-                $salespeople = Salesperson::pluck('name', 'id');
+                $salespeople = Salesperson::where('enable', 1)->pluck('name', 'id');
                 $filter->where('销售员', function ($query) {
                     $query->whereHas('salesperson', function ($query) {
                         $query->where('id', $this->input);
