@@ -35,7 +35,7 @@ class QunRequest extends FormRequest
                     'num' => 'required',
                     'btnText' => 'nullable',
                     'shareTitle' => 'required|string',
-                    'shareDesc' => 'required|string',
+                    'shareDesc' => 'nullable|string',
                     'shareImg' => 'required',
                 ];
                 break;
