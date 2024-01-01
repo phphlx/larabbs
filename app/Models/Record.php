@@ -7,7 +7,7 @@ use Dcat\Admin\Traits\HasDateTimeFormatter;
 
 class Record extends Model
 {
-//    use HasDateTimeFormatter;
+    use HasDateTimeFormatter;
 
     protected $fillable = ['user_id', 'admin_id', 'money', 'start_at', 'end_at', 'salesperson_id'];
 
