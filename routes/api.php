@@ -115,6 +115,8 @@ Route::prefix('v1')
                 // 活跃用户
                 Route::get('actived/users', 'UsersController@activedIndex')
                     ->name('actived.users.index');
+                // 群平台获取分享信息
+                Route::get('configs/{config}', 'ConfigsController@show')->name('configs.show');
 
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function () {

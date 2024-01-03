@@ -61,9 +61,13 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection share_title
      * @property Grid\Column|Collection share_img
      * @property Grid\Column|Collection btn_text
+     * @property Grid\Column|Collection from
+     * @property Grid\Column|Collection share_desc
      * @property Grid\Column|Collection admin_id
      * @property Grid\Column|Collection money
+     * @property Grid\Column|Collection salesperson_id
      * @property Grid\Column|Collection topic_id
+     * @property Grid\Column|Collection enable
      * @property Grid\Column|Collection body
      * @property Grid\Column|Collection category_id
      * @property Grid\Column|Collection reply_count
@@ -76,6 +80,11 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection weapp_openid
      * @property Grid\Column|Collection weixin_session_key
      * @property Grid\Column|Collection weixin_unionid
+     * @property Grid\Column|Collection tiktok_openid
+     * @property Grid\Column|Collection tiktok_unionid
+     * @property Grid\Column|Collection tiktok_session_key
+     * @property Grid\Column|Collection kuaishou_openid
+     * @property Grid\Column|Collection kuaishou_session_key
      * @property Grid\Column|Collection start_at
      * @property Grid\Column|Collection end_at
      * @property Grid\Column|Collection introduction
@@ -137,9 +146,13 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection share_title(string $label = null)
      * @method Grid\Column|Collection share_img(string $label = null)
      * @method Grid\Column|Collection btn_text(string $label = null)
+     * @method Grid\Column|Collection from(string $label = null)
+     * @method Grid\Column|Collection share_desc(string $label = null)
      * @method Grid\Column|Collection admin_id(string $label = null)
      * @method Grid\Column|Collection money(string $label = null)
+     * @method Grid\Column|Collection salesperson_id(string $label = null)
      * @method Grid\Column|Collection topic_id(string $label = null)
+     * @method Grid\Column|Collection enable(string $label = null)
      * @method Grid\Column|Collection body(string $label = null)
      * @method Grid\Column|Collection category_id(string $label = null)
      * @method Grid\Column|Collection reply_count(string $label = null)
@@ -152,6 +165,11 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection weapp_openid(string $label = null)
      * @method Grid\Column|Collection weixin_session_key(string $label = null)
      * @method Grid\Column|Collection weixin_unionid(string $label = null)
+     * @method Grid\Column|Collection tiktok_openid(string $label = null)
+     * @method Grid\Column|Collection tiktok_unionid(string $label = null)
+     * @method Grid\Column|Collection tiktok_session_key(string $label = null)
+     * @method Grid\Column|Collection kuaishou_openid(string $label = null)
+     * @method Grid\Column|Collection kuaishou_session_key(string $label = null)
      * @method Grid\Column|Collection start_at(string $label = null)
      * @method Grid\Column|Collection end_at(string $label = null)
      * @method Grid\Column|Collection introduction(string $label = null)
@@ -218,9 +236,13 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection share_title
      * @property Show\Field|Collection share_img
      * @property Show\Field|Collection btn_text
+     * @property Show\Field|Collection from
+     * @property Show\Field|Collection share_desc
      * @property Show\Field|Collection admin_id
      * @property Show\Field|Collection money
+     * @property Show\Field|Collection salesperson_id
      * @property Show\Field|Collection topic_id
+     * @property Show\Field|Collection enable
      * @property Show\Field|Collection body
      * @property Show\Field|Collection category_id
      * @property Show\Field|Collection reply_count
@@ -233,6 +255,11 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection weapp_openid
      * @property Show\Field|Collection weixin_session_key
      * @property Show\Field|Collection weixin_unionid
+     * @property Show\Field|Collection tiktok_openid
+     * @property Show\Field|Collection tiktok_unionid
+     * @property Show\Field|Collection tiktok_session_key
+     * @property Show\Field|Collection kuaishou_openid
+     * @property Show\Field|Collection kuaishou_session_key
      * @property Show\Field|Collection start_at
      * @property Show\Field|Collection end_at
      * @property Show\Field|Collection introduction
@@ -294,9 +321,13 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection share_title(string $label = null)
      * @method Show\Field|Collection share_img(string $label = null)
      * @method Show\Field|Collection btn_text(string $label = null)
+     * @method Show\Field|Collection from(string $label = null)
+     * @method Show\Field|Collection share_desc(string $label = null)
      * @method Show\Field|Collection admin_id(string $label = null)
      * @method Show\Field|Collection money(string $label = null)
+     * @method Show\Field|Collection salesperson_id(string $label = null)
      * @method Show\Field|Collection topic_id(string $label = null)
+     * @method Show\Field|Collection enable(string $label = null)
      * @method Show\Field|Collection body(string $label = null)
      * @method Show\Field|Collection category_id(string $label = null)
      * @method Show\Field|Collection reply_count(string $label = null)
@@ -309,6 +340,11 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection weapp_openid(string $label = null)
      * @method Show\Field|Collection weixin_session_key(string $label = null)
      * @method Show\Field|Collection weixin_unionid(string $label = null)
+     * @method Show\Field|Collection tiktok_openid(string $label = null)
+     * @method Show\Field|Collection tiktok_unionid(string $label = null)
+     * @method Show\Field|Collection tiktok_session_key(string $label = null)
+     * @method Show\Field|Collection kuaishou_openid(string $label = null)
+     * @method Show\Field|Collection kuaishou_session_key(string $label = null)
      * @method Show\Field|Collection start_at(string $label = null)
      * @method Show\Field|Collection end_at(string $label = null)
      * @method Show\Field|Collection introduction(string $label = null)
