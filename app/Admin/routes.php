@@ -20,5 +20,6 @@ Route::group([
     $router->resource('salespeople', 'SalespersonController')->except('show');
     $router->resource('quns', 'QunController');
     $router->resource('videos', 'VideoController');
+    $router->resource('articles', 'ArticleController');
     $router->resource('configs', 'ConfigController');
 });

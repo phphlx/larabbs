@@ -38,13 +38,15 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection remember_token
      * @property Grid\Column|Collection content
      * @property Grid\Column|Collection post_count
+     * @property Grid\Column|Collection link
+     * @property Grid\Column|Collection share_title
+     * @property Grid\Column|Collection share_img
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
      * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
      * @property Grid\Column|Collection path
-     * @property Grid\Column|Collection link
      * @property Grid\Column|Collection model_type
      * @property Grid\Column|Collection model_id
      * @property Grid\Column|Collection notifiable_type
@@ -58,8 +60,6 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection intro
      * @property Grid\Column|Collection qrcode
      * @property Grid\Column|Collection num
-     * @property Grid\Column|Collection share_title
-     * @property Grid\Column|Collection share_img
      * @property Grid\Column|Collection btn_text
      * @property Grid\Column|Collection from
      * @property Grid\Column|Collection share_desc
@@ -123,13 +123,15 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection remember_token(string $label = null)
      * @method Grid\Column|Collection content(string $label = null)
      * @method Grid\Column|Collection post_count(string $label = null)
+     * @method Grid\Column|Collection link(string $label = null)
+     * @method Grid\Column|Collection share_title(string $label = null)
+     * @method Grid\Column|Collection share_img(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
      * @method Grid\Column|Collection path(string $label = null)
-     * @method Grid\Column|Collection link(string $label = null)
      * @method Grid\Column|Collection model_type(string $label = null)
      * @method Grid\Column|Collection model_id(string $label = null)
      * @method Grid\Column|Collection notifiable_type(string $label = null)
@@ -143,8 +145,6 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection intro(string $label = null)
      * @method Grid\Column|Collection qrcode(string $label = null)
      * @method Grid\Column|Collection num(string $label = null)
-     * @method Grid\Column|Collection share_title(string $label = null)
-     * @method Grid\Column|Collection share_img(string $label = null)
      * @method Grid\Column|Collection btn_text(string $label = null)
      * @method Grid\Column|Collection from(string $label = null)
      * @method Grid\Column|Collection share_desc(string $label = null)
@@ -213,13 +213,15 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection remember_token
      * @property Show\Field|Collection content
      * @property Show\Field|Collection post_count
+     * @property Show\Field|Collection link
+     * @property Show\Field|Collection share_title
+     * @property Show\Field|Collection share_img
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
      * @property Show\Field|Collection payload
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
      * @property Show\Field|Collection path
-     * @property Show\Field|Collection link
      * @property Show\Field|Collection model_type
      * @property Show\Field|Collection model_id
      * @property Show\Field|Collection notifiable_type
@@ -233,8 +235,6 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection intro
      * @property Show\Field|Collection qrcode
      * @property Show\Field|Collection num
-     * @property Show\Field|Collection share_title
-     * @property Show\Field|Collection share_img
      * @property Show\Field|Collection btn_text
      * @property Show\Field|Collection from
      * @property Show\Field|Collection share_desc
@@ -298,13 +298,15 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection remember_token(string $label = null)
      * @method Show\Field|Collection content(string $label = null)
      * @method Show\Field|Collection post_count(string $label = null)
+     * @method Show\Field|Collection link(string $label = null)
+     * @method Show\Field|Collection share_title(string $label = null)
+     * @method Show\Field|Collection share_img(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
      * @method Show\Field|Collection path(string $label = null)
-     * @method Show\Field|Collection link(string $label = null)
      * @method Show\Field|Collection model_type(string $label = null)
      * @method Show\Field|Collection model_id(string $label = null)
      * @method Show\Field|Collection notifiable_type(string $label = null)
@@ -318,8 +320,6 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection intro(string $label = null)
      * @method Show\Field|Collection qrcode(string $label = null)
      * @method Show\Field|Collection num(string $label = null)
-     * @method Show\Field|Collection share_title(string $label = null)
-     * @method Show\Field|Collection share_img(string $label = null)
      * @method Show\Field|Collection btn_text(string $label = null)
      * @method Show\Field|Collection from(string $label = null)
      * @method Show\Field|Collection share_desc(string $label = null)

@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeds;
+
 use Dcat\Admin\Models;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class AdminTablesSeeder extends Seeder
 {
@@ -20,146 +22,170 @@ class AdminTablesSeeder extends Seeder
                 [
                     "id" => 2,
                     "parent_id" => 0,
-                    "order" => 8,
+                    "order" => 9,
                     "title" => "Admin",
                     "icon" => "feather icon-settings",
                     "uri" => "",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-26 17:44:07",
-                    "updated_at" => "2022-09-27 12:14:09"
+                    "updated_at" => "2024-01-05 10:33:01"
                 ],
                 [
                     "id" => 3,
                     "parent_id" => 2,
-                    "order" => 9,
+                    "order" => 10,
                     "title" => "Users",
                     "icon" => "",
                     "uri" => "auth/users",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-26 17:44:07",
-                    "updated_at" => "2022-09-27 12:14:09"
+                    "updated_at" => "2024-01-05 10:33:01"
                 ],
                 [
                     "id" => 4,
                     "parent_id" => 2,
-                    "order" => 10,
+                    "order" => 11,
                     "title" => "Roles",
                     "icon" => "",
                     "uri" => "auth/roles",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-26 17:44:07",
-                    "updated_at" => "2022-09-27 12:14:09"
+                    "updated_at" => "2024-01-05 10:33:01"
                 ],
                 [
                     "id" => 5,
                     "parent_id" => 2,
-                    "order" => 11,
+                    "order" => 12,
                     "title" => "Permission",
                     "icon" => "",
                     "uri" => "auth/permissions",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-26 17:44:07",
-                    "updated_at" => "2022-09-27 12:14:09"
+                    "updated_at" => "2024-01-05 10:33:01"
                 ],
                 [
                     "id" => 6,
                     "parent_id" => 2,
-                    "order" => 12,
+                    "order" => 13,
                     "title" => "Menu",
                     "icon" => "",
                     "uri" => "auth/menu",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-26 17:44:07",
-                    "updated_at" => "2022-09-27 12:14:09"
+                    "updated_at" => "2024-01-05 10:33:01"
                 ],
                 [
                     "id" => 7,
                     "parent_id" => 2,
-                    "order" => 13,
+                    "order" => 14,
                     "title" => "Extensions",
                     "icon" => "",
                     "uri" => "auth/extensions",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-26 17:44:07",
-                    "updated_at" => "2022-09-27 12:14:09"
+                    "updated_at" => "2024-01-05 10:33:01"
                 ],
                 [
                     "id" => 8,
                     "parent_id" => 0,
-                    "order" => 2,
+                    "order" => 1,
                     "title" => "用户",
                     "icon" => "fa-users",
                     "uri" => "/users",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-27 10:28:26",
-                    "updated_at" => "2022-09-27 10:29:07"
+                    "updated_at" => "2024-01-03 16:32:28"
                 ],
                 [
                     "id" => 10,
                     "parent_id" => 0,
-                    "order" => 4,
+                    "order" => 3,
                     "title" => "用户权限",
                     "icon" => "fa-lock",
                     "uri" => "/permissions",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-27 11:08:58",
-                    "updated_at" => "2022-09-28 15:37:15"
+                    "updated_at" => "2024-01-03 16:32:28"
                 ],
                 [
                     "id" => 11,
                     "parent_id" => 0,
-                    "order" => 3,
+                    "order" => 2,
                     "title" => "开通记录",
                     "icon" => "fa-apple",
                     "uri" => "/records",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-27 11:35:38",
-                    "updated_at" => "2022-09-28 15:37:15"
+                    "updated_at" => "2024-01-03 16:32:28"
                 ],
                 [
                     "id" => 13,
                     "parent_id" => 0,
-                    "order" => 5,
+                    "order" => 4,
                     "title" => "销售员",
                     "icon" => "fa-venus-mars",
                     "uri" => "/salespeople",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-27 12:10:09",
-                    "updated_at" => "2022-10-06 18:58:51"
+                    "updated_at" => "2024-01-03 16:32:28"
                 ],
                 [
                     "id" => 14,
                     "parent_id" => 0,
-                    "order" => 6,
+                    "order" => 5,
                     "title" => "群记录",
                     "icon" => "fa-wechat",
                     "uri" => "/quns",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-27 12:13:30",
-                    "updated_at" => "2022-09-27 12:19:50"
+                    "updated_at" => "2024-01-03 16:32:28"
                 ],
                 [
                     "id" => 15,
                     "parent_id" => 0,
-                    "order" => 7,
+                    "order" => 6,
                     "title" => "视频记录",
                     "icon" => "fa-video-camera",
                     "uri" => "/videos",
                     "extension" => "",
                     "show" => 1,
                     "created_at" => "2022-09-27 12:13:56",
-                    "updated_at" => "2022-09-27 12:14:09"
+                    "updated_at" => "2024-01-03 16:32:28"
+                ],
+                [
+                    "id" => 16,
+                    "parent_id" => 0,
+                    "order" => 8,
+                    "title" => "配置",
+                    "icon" => "fa-cog",
+                    "uri" => "/configs",
+                    "extension" => "",
+                    "show" => 1,
+                    "created_at" => "2024-01-03 16:32:08",
+                    "updated_at" => "2024-01-05 10:33:06"
+                ],
+                [
+                    "id" => 17,
+                    "parent_id" => 0,
+                    "order" => 7,
+                    "title" => "公告",
+                    "icon" => "fa-bell-o",
+                    "uri" => "/articles",
+                    "extension" => "",
+                    "show" => 1,
+                    "created_at" => "2024-01-05 10:32:41",
+                    "updated_at" => "2024-01-05 10:33:21"
                 ]
             ]
         );
@@ -323,30 +349,30 @@ class AdminTablesSeeder extends Seeder
         );
 
         Models\Setting::truncate();
-        Models\Setting::insert(
-            [
+		Models\Setting::insert(
+			[
 
             ]
-        );
+		);
 
-        Models\Extension::truncate();
-        Models\Extension::insert(
-            [
-
-            ]
-        );
-
-        Models\ExtensionHistory::truncate();
-        Models\ExtensionHistory::insert(
-            [
+		Models\Extension::truncate();
+		Models\Extension::insert(
+			[
 
             ]
-        );
+		);
+
+		Models\ExtensionHistory::truncate();
+		Models\ExtensionHistory::insert(
+			[
+
+            ]
+		);
 
         // pivot tables
         DB::table('admin_permission_menu')->truncate();
-        DB::table('admin_permission_menu')->insert(
-            [
+		DB::table('admin_permission_menu')->insert(
+			[
                 [
                     "permission_id" => 7,
                     "menu_id" => 8,
@@ -384,7 +410,7 @@ class AdminTablesSeeder extends Seeder
                     "updated_at" => "2022-10-06 19:06:49"
                 ]
             ]
-        );
+		);
 
         DB::table('admin_role_menu')->truncate();
         DB::table('admin_role_menu')->insert(
@@ -460,6 +486,12 @@ class AdminTablesSeeder extends Seeder
                     "menu_id" => 15,
                     "created_at" => "2022-10-06 18:51:56",
                     "updated_at" => "2022-10-06 18:51:56"
+                ],
+                [
+                    "role_id" => 1,
+                    "menu_id" => 16,
+                    "created_at" => "2024-01-03 16:32:08",
+                    "updated_at" => "2024-01-03 16:32:08"
                 ],
                 [
                     "role_id" => 2,

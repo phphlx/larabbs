@@ -10,7 +10,7 @@ class ArticlesController extends Controller
 {
     public function index(Request $request, ArticleQuery $query)
     {
-        $topics = $query->paginate();
+        $topics = $query->latest()->paginate();
 
         return ArticleResource::collection($topics);
     }
