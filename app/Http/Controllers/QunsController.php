@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Qun;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -45,16 +46,10 @@ class QunsController extends Controller
      * @param \App\Models\Qun $qun
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Qun $qun, Request $request)
+    public function show(Qun $qun, Request $request, User $user)
     {
         $program = $request->program;
-        if ($program === 'yinghuochong') {
-            $miniApp = app('wechat.mini_program.yinghuochong');
-        } else if ($program === 'zhensheng') {
-            $miniApp = app('wechat.mini_program.zhensheng');
-        } else { // 谨耀商
-            $miniApp = app('wechat.mini_program');
-        }
+        $miniApp = $user->weappCodeToSession($program);
         try {
             $access_token = $miniApp->access_token->getToken()['access_token'];
             $response = Http::post('https://api.weixin.qq.com/wxa/generatescheme?&access_token=' . $access_token,

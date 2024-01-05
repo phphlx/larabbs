@@ -101,17 +101,29 @@ return [
              'token'   => env('WECHAT_MINI_PROGRAM_TOKEN', ''),
              'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY', ''),
          ],
-         'zhensheng' => [
-             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID_ZHENSHENG', ''),
-             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET_ZHENSHENG', ''),
-             'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_ZHENSHENG', ''),
-             'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_ZHENSHENG', ''),
+         'sayunshang' => [
+             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID_SAYUNSHANG', ''),
+             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET_SAYUNSHANG', ''),
+             'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_SAYUNSHANG', ''),
+             'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_SAYUNSHANG', ''),
+         ],
+         'mengdatong' => [
+             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID_MENGDATONG', ''),
+             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET_MENGDATONG', ''),
+             'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_MENGDATONG', ''),
+             'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_MENGDATONG', ''),
          ],
          'yinghuochong' => [
              'app_id'  => env('WECHAT_MINI_PROGRAM_APPID_YINGHUOCHONG', ''),
              'secret'  => env('WECHAT_MINI_PROGRAM_SECRET_YINGHUOCHONG', ''),
              'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_YINGHUOCHONG', ''),
              'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_YINGHUOCHONG', ''),
+         ],
+         'yinghuochong_new' => [
+             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID_YINGHUOCHONG_NEW', ''),
+             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET_YINGHUOCHONG_NEW', ''),
+             'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_YINGHUOCHONG_NEW', ''),
+             'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_YINGHUOCHONG_NEW', ''),
          ],
      ],
 

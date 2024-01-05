@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 trait CodeToSession
 {
-    public function kuaiShou($code, $program)
+    public function kuaiShou($code, $program) // 快手小程序
     {
         if ($program === 'sanchaji2') { // 三叉戟快手第二个小程序
             $appid = config('kuaishou.sanchaji2.app_id');
@@ -25,6 +25,31 @@ trait CodeToSession
         ]);
 
         if (isset($response['error'])) { // 如果结果错误, 说明 code 已过期或不正确, 返回 401 错误
+            throw new AuthenticationException('code 不正确');
+        }
+
+        return $response;
+    }
+
+    public function weappCodeToSession($program, $code = null) // 微信小程序
+    {
+        if ($program === 'yinghuochong') {
+            $miniApp = app('wechat.mini_program.yinghuochong');
+        } else if($program === 'sayunshang') {
+            $miniApp = app('wechat.mini_program.sayunshang');
+        } else if ($program === 'mengdatong') {
+            $miniApp = app('wechat.mini_program.mengdatong');
+        } else if($program === 'yinghuochong_new') {
+            $miniApp = app('wechat.mini_program.yinghuochong_new');
+        } else { // 谨耀商
+            $miniApp = app('wechat.mini_program');
+        }
+        if (is_null($code)) {
+            return $miniApp;
+        }
+        $response = $miniApp->auth->session($code);
+
+        if (isset($response['errcode'])) {
             throw new AuthenticationException('code 不正确');
         }
 

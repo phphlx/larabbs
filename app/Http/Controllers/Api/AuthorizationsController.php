@@ -79,28 +79,13 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
-    public function weappStore(WeappAuthorizationRequest $request)
+    public function weappStore(WeappAuthorizationRequest $request, User $user)
     {
-        $code = $request->code;
-
-        // 根据 code 获取微信 openid 和 session_key
-        if ($request->program === 'yinghuochong') {
-            $miniApp = app('wechat.mini_program.yinghuochong');
-        } else if ($request->program === 'zhensheng') {
-            $miniApp = app('wechat.mini_program.zhensheng');
-        } else { // 谨耀商
-            $miniApp = app('wechat.mini_program');
-        }
-        $data = $miniApp->auth->session($code);
-
-        // 如果结果错误, 说明 code 已过期或不正确, 返回 401 错误
-        if (isset($data['errcode'])) {
-            throw new AuthenticationException('code 不正确');
-        }
+        $response = $user->weappCodeToSession($request->program, $request->code);
 
         // 找到 openid 对应的用户
-        $user = User::where('weapp_openid', $data['openid'])->first();
-        $attributes['weixin_session_key'] = $data['session_key'];
+        $user = User::where('weapp_openid', $response['openid'])->first();
+        $attributes['weixin_session_key'] = $response['session_key'];
 
         // 未找到对应用户则需要提交用户名密码进行用户绑定
         if (!$user) {
@@ -125,7 +110,7 @@ class AuthorizationsController extends Controller
 
             // 获取对应的用户
             $user = auth('api')->getUser();
-            $attributes['weapp_openid'] = $data['openid'];
+            $attributes['weapp_openid'] = $response['openid'];
         }
 
         // 更新用户数据

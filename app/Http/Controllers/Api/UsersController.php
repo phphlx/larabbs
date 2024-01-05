@@ -37,24 +37,12 @@ class UsersController extends Controller
         return (new UserResource($user))->showSensitiveFields();
     }
 
-    public function weappStore(UserRequest $request)
+    public function weappStore(UserRequest $request, User $user)
     {
-        // 获取微信的 openid 和 session_key
-        if ($request->program === 'yinghuochong') {
-            $miniApp = app('wechat.mini_program.yinghuochong');
-        } else if ($request->program === 'zhensheng') {
-            $miniApp = app('wechat.mini_program.zhensheng');
-        } else { // 谨耀商
-            $miniApp = app('wechat.mini_program');
-        }
-        $data = $miniApp->auth->session($request->code);
-
-        if (isset($data['errcode'])) {
-            throw new AuthenticationException('code 不正确');
-        }
+        $response = $user->weappCodeToSession($request->program, $request->code);
 
         // 如果 openid 对应的用户已存在，报错403
-        $user = User::where('weapp_openid', $data['openid'])->first();
+        $user = User::where('weapp_openid', $response['openid'])->first();
 
         if ($user) {
             throw new AuthenticationException('微信已绑定其他用户，请直接登录');
@@ -66,8 +54,8 @@ class UsersController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'password' => $request->password,
-            'weapp_openid' => $data['openid'],
-            'weixin_session_key' => $data['session_key'],
+            'weapp_openid' => $response['openid'],
+            'weixin_session_key' => $response['session_key'],
         ]);
 
         return (new UserResource($user))->showSensitiveFields();
