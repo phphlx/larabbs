@@ -130,4 +130,9 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
     {
         return [];
     }
+
+    public function qrcode()
+    {
+        return $this->hasOne(Image::class)->whereType('qrcode');
+    }
 }

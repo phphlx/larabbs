@@ -39,3 +39,6 @@ Route::resource('notifications', 'NotificationsController', ['only' => ['index']
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
 
 Route::get('quns/{qun}', [\App\Http\Controllers\QunsController::class, 'show'])->name('quns.show');
+// 竟然和 public/images文件夹冲突
+Route::post('image', 'ImagesController@store')->name('images.store');
+Route::get('images/{image}', 'ImagesController@show')->name('images.show');

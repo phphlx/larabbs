@@ -32,26 +32,42 @@
     {{-- 用户发布的内容 --}}
     <div class="card ">
       <div class="card-body">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link bg-transparent {{ active_class(if_query('tab', null)) }}" href="{{ route('users.show', $user->id) }}">
-              Ta 的话题
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'replies')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'replies']) }}">
-              Ta 的回复
-            </a>
-          </li>
-        </ul>
-        @if (if_query('tab', 'replies'))
-          @include('users._replies', ['replies' => $user->replies()->with('topic')->recent()->paginate(5)])
-        @else
-          @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
+        @if($user->qrcode)
+          <a href="{{ route('images.show', $user->qrcode) }}" target="_blank">查看登录二维码</a>
+          <hr>
         @endif
+        <form action="{{ route('images.store') }}" method="post"
+              accept-charset="UTF-8"
+              enctype="multipart/form-data">
+          @method('post')
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="type" value="qrcode">
+
+          @include('shared._error')
+
+          <div class="form-group mb-4">
+            <label for="" class="avatar-label">上传 / 更新二维码</label>
+            <input type="file" name="qrcode" class="form-control-file">
+          </div>
+
+          <div class="well well-sm">
+            <button type="submit" class="btn btn-primary" onclick="return check(this.form)">保存</button>
+          </div>
+        </form>
       </div>
     </div>
 
     </div>
 </div>
 @stop
+@section('scripts')
+  <script>
+    function check(form) {
+      if ($('input[name=qrcode]').val()) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  </script>
+@endsection
