@@ -48,7 +48,7 @@ class VideosController extends Controller
         $video->ad_content = $request->adContent;
         $video->intro = $request->intro;
         $video->qrcode = $request->qrcode[0]['url'];
-        $video->time = $request->time;
+        $video->time = intval($request->time);
         $video->type = $request->type;
         $video->link = $request->link;
         $video->btn_text = $request->btnText;
@@ -91,7 +91,7 @@ class VideosController extends Controller
         $video->ad_content = $request->adContent;
         $video->intro = $request->intro;
         $video->qrcode = $request->qrcode[0]['url'];
-        $video->time = $request->time;
+        $video->time = intval($request->time);
         $video->type = $request->type;
         $video->link = $request->link;
         $video->btn_text = $request->btnText;

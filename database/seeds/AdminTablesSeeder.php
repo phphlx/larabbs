@@ -1,10 +1,7 @@
 <?php
 
-namespace Database\Seeds;
-
 use Dcat\Admin\Models;
 use Illuminate\Database\Seeder;
-use DB;
 
 class AdminTablesSeeder extends Seeder
 {
