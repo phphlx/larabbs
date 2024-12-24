@@ -36,7 +36,7 @@ class QunController extends AdminController
             $grid->column('updated_at')->sortable();
 
             $grid->setActionClass(Grid\Displayers\Actions::class);
-            $grid->model()->orderByDesc('id');
+            $grid->model()->orderByDesc('updated_at');
             $grid->disableViewButton();
 
             $grid->filter(function (Grid\Filter $filter) {
@@ -104,5 +104,12 @@ class QunController extends AdminController
 
             $form->disableViewButton();
         });
+    }
+
+    public function destroy($id)
+    {
+        $qun = \App\Models\Qun::find($id);
+        $qun->createVersion($qun);
+        return $this->form()->destroy($id);
     }
 }

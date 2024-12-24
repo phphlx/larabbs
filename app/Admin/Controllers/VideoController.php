@@ -42,7 +42,7 @@ class VideoController extends AdminController
             $grid->column('ad_content');
             $grid->column('updated_at')->sortable();
 
-            $grid->model()->orderByDesc('id');
+            $grid->model()->orderByDesc('updated_at');
             $grid->setActionClass(Grid\Displayers\Actions::class);
             $grid->disableViewButton();
 
@@ -118,5 +118,12 @@ class VideoController extends AdminController
 
             $form->disableViewButton();
         });
+    }
+
+    public function destroy($id)
+    {
+        $video = \App\Models\Video::find($id);
+        $video->createVersion($video);
+        return $this->form()->destroy($id);
     }
 }

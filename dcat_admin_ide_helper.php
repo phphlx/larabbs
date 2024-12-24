@@ -91,6 +91,9 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection notification_count
      * @property Grid\Column|Collection last_actived_at
      * @property Grid\Column|Collection registration_id
+     * @property Grid\Column|Collection model_data
+     * @property Grid\Column|Collection versionable_id
+     * @property Grid\Column|Collection versionable_type
      * @property Grid\Column|Collection video
      * @property Grid\Column|Collection time
      * @property Grid\Column|Collection ad_title
@@ -176,6 +179,9 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection notification_count(string $label = null)
      * @method Grid\Column|Collection last_actived_at(string $label = null)
      * @method Grid\Column|Collection registration_id(string $label = null)
+     * @method Grid\Column|Collection model_data(string $label = null)
+     * @method Grid\Column|Collection versionable_id(string $label = null)
+     * @method Grid\Column|Collection versionable_type(string $label = null)
      * @method Grid\Column|Collection video(string $label = null)
      * @method Grid\Column|Collection time(string $label = null)
      * @method Grid\Column|Collection ad_title(string $label = null)
@@ -266,6 +272,9 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection notification_count
      * @property Show\Field|Collection last_actived_at
      * @property Show\Field|Collection registration_id
+     * @property Show\Field|Collection model_data
+     * @property Show\Field|Collection versionable_id
+     * @property Show\Field|Collection versionable_type
      * @property Show\Field|Collection video
      * @property Show\Field|Collection time
      * @property Show\Field|Collection ad_title
@@ -351,6 +360,9 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection notification_count(string $label = null)
      * @method Show\Field|Collection last_actived_at(string $label = null)
      * @method Show\Field|Collection registration_id(string $label = null)
+     * @method Show\Field|Collection model_data(string $label = null)
+     * @method Show\Field|Collection versionable_id(string $label = null)
+     * @method Show\Field|Collection versionable_type(string $label = null)
      * @method Show\Field|Collection video(string $label = null)
      * @method Show\Field|Collection time(string $label = null)
      * @method Show\Field|Collection ad_title(string $label = null)

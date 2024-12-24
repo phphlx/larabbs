@@ -22,4 +22,5 @@ Route::group([
     $router->resource('videos', 'VideoController');
     $router->resource('articles', 'ArticleController');
     $router->resource('configs', 'ConfigController');
+    $router->resource('versions', 'VersionController');
 });

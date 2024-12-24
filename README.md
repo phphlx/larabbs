@@ -5,6 +5,7 @@
   - 后台, CodeToSession@weappCodeToSession(这个好像不用动)
   - 后台, .env appid appsecret host user database url
   - adminTablesSeeder 需要注释命名空间
+  - Model/Qun, Model/Video
   -
   - appid
   - wepy.config.js API_URL
