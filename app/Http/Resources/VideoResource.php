@@ -23,7 +23,7 @@ class VideoResource extends JsonResource
             'adTitle' => $this->ad_title,
             'adContent' => $this->ad_content,
             'intro' => $this->intro,
-            'qrcode' => [['url' => str_replace(['https', 'http'], ['http', 'https'], $this->qrcode)]],
+            'qrcode' => [['url' => $this->qrcode]],
             'time' => $this->time,
             'type' => $this->type,
             'link' => $this->link,

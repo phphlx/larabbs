@@ -22,7 +22,7 @@ class QunResource extends JsonResource
             'intro' => $this->intro,
             'type' => $this->type,
             'avatar' => [['url' => $this->avatar]],
-            'qrcode' => [['url' => str_replace(['https', 'http'], ['http', 'https'], $this->qrcode)]],
+            'qrcode' => [['url' => $this->qrcode]],
             'num' => $this->num,
             'btnText' => $this->btn_text,
             'shareTitle' => $this->share_title,
