@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\FileUnUsed;
 use App\Http\Controllers\Controller;
 use App\Http\Queries\VideoQuery;
 use App\Http\Requests\Api\VideoRequest;
 use App\Http\Resources\VideoResource;
+use App\Jobs\DeleteUnUsedFile;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -99,8 +101,18 @@ class VideosController extends Controller
         $video->share_img = $request->shareImg[0]['url'];
         $video->user_id = $request->user()->id;
         $video->from = $request->from ?: 0;
+        $arr = [];
+        if ($video->isDirty('video')) {
+            array_push($arr, $video->getOriginal('video'));
+        }
+        if ($video->isDirty('qrcode')) {
+            array_push($arr, $video->getOriginal('qrcode'));
+        }
+        if ($video->isDirty('share_img')) {
+            array_push($arr, $video->getOriginal('share_img'));
+        }
         $video->save();
-
+        dispatch(new DeleteUnUsedFile($arr))->delay(now()->addSeconds(10));
         return new VideoResource($video);
     }
 
@@ -113,7 +125,7 @@ class VideosController extends Controller
     public function destroy(Video $video)
     {
         $this->authorize('destroy', $video);
-
+        dispatch(new DeleteUnUsedFile([$video->video, $video->qrcode, $video->share_img]))->delay(now()->addSeconds(10));
         $video->delete();
 
         return response(null, 204);

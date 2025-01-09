@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Queries\QunQuery;
 use App\Http\Requests\Api\QunRequest;
 use App\Http\Resources\QunResource;
+use App\Jobs\DeleteUnUsedFile;
 use App\Models\Qun;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -93,8 +94,18 @@ class QunsController extends Controller
         $qun->share_img = $request->shareImg[0]['url'];
         $qun->user_id = $request->user()->id;
         $qun->from = $request->from ?: 0;
+        $arr = [];
+        if ($qun->isDirty('avatar')) {
+            array_push($arr, $qun->getOriginal('avatar'));
+        }
+        if ($qun->isDirty('qrcode')) {
+            array_push($arr, $qun->getOriginal('qrcode'));
+        }
+        if ($qun->isDirty('share_img')) {
+            array_push($arr, $qun->getOriginal('share_img'));
+        }
         $qun->save();
-
+        dispatch(new DeleteUnUsedFile($arr))->delay(now()->addSeconds(10));
         return new QunResource($qun);
     }
 
@@ -107,7 +118,7 @@ class QunsController extends Controller
     public function destroy(Qun $qun)
     {
         $this->authorize('destroy', $qun);
-
+        dispatch(new DeleteUnUsedFile([$qun->avatar, $qun->qrcode, $qun->share_img]))->delay(now()->addSeconds(10));
         $qun->delete();
 
         return response(null, 204);

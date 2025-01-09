@@ -3,14 +3,22 @@
 
 - 小程序需要修改 
   - 后台, CodeToSession@weappCodeToSession(这个好像不用动)
-  - 后台, .env appid appsecret host user database url
+  - 后台, .env appid appsecret host user database url REDIS_CLENT=predis
   - adminTablesSeeder 需要注释命名空间
   - Model/Qun, Model/Video
   -
   - appid
-  - wepy.config.js API_URL
-  - 小程序项目 wepy.config.js 的 PROGRAM
+  - wepy.config.js API_URL wepy.config.js 的 PROGRAM
   - articles/index.wpy 标题
+  - horizon.service 放到 /etc/systemd/system 文件夹
+      systemctl daemon-reload 重载配置
+      systemctl start horizon.service
+      systemctl status horizon.service
+      systemctl restart horizon.service
+      systemctl enable horizon.service
+      systemctl disable horizon.service
+      systemctl stop horizon.service
+      journalctl -u horizon.service 查看实时日志
 
 - 服务器配置
   - 需要修改 nginx.conf 配置 client_max_body_size 100M; 重启 nginx

@@ -19,19 +19,19 @@ class Qun extends Model
 
     public function getAvatarAttribute()
     {
-        return str_replace(['xcx.gongzhonghaoxifen.com', 'xcx.sanchaji520.com'], 'op.sanchaji19.com',
+        return str_replace(['op.sanchaji19.com', 'xcx.sanchaji520.com'], 'xcx.gongzhonghaoxifen.com',
             $this->attributes['avatar']);
     }
 
     public function getQrcodeAttribute()
     {
-        return str_replace(['xcx.gongzhonghaoxifen.com', 'xcx.sanchaji520.com'], 'op.sanchaji19.com',
+        return str_replace(['op.sanchaji19.com', 'xcx.sanchaji520.com'], 'xcx.gongzhonghaoxifen.com',
             $this->attributes['qrcode']);
     }
 
     public function getShareImgAttribute()
     {
-        return str_replace(['xcx.gongzhonghaoxifen.com', 'xcx.sanchaji520.com'], 'op.sanchaji19.com',
+        return str_replace(['op.sanchaji19.com', 'xcx.sanchaji520.com'], 'xcx.gongzhonghaoxifen.com',
             $this->attributes['share_img']);
     }
 }
