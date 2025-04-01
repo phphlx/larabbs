@@ -41,6 +41,10 @@ trait CodeToSession
             $miniApp = app('wechat.mini_program.mengdatong');
         } else if($program === 'yinghuochong_new') {
             $miniApp = app('wechat.mini_program.yinghuochong_new');
+        } else if ($program === 'feiliya') {
+            $miniApp = app('wechat.mini_program.feiliya');
+        } else if ($program === 'feiliya_tool') {
+            $miniApp = app('wechat.mini_program.feiliya_tool');
         } else { // 谨耀商
             $miniApp = app('wechat.mini_program');
         }

@@ -4,11 +4,12 @@
 - 小程序需要修改 
   - 后台, CodeToSession@weappCodeToSession(这个好像不用动)
   - 后台, .env appid appsecret host user database url REDIS_CLENT=predis
-  - adminTablesSeeder 需要注释命名空间
+  - adminTablesSeeder 需要注释命名空间, composer添加database/Seeders 添加Seeders文件夹, 修改namespace Database\Seeders;
   - Model/Qun, Model/Video
+  - 数据库修改users.email_verified_at
   -
-  - appid
-  - wepy.config.js API_URL wepy.config.js 的 PROGRAM
+  - project.config.json appid
+  - wepy.config.js API_URL, PROGRAM
   - articles/index.wpy 标题
   - horizon.service 放到 /etc/systemd/system 文件夹
       systemctl daemon-reload 重载配置
@@ -28,11 +29,15 @@
 
 
 - weixin配置
+    - 目录www:www权限
+    - php7.4
     - 清除数据库
     - 修改数据库配置文件
     - 删除 .user.ini 文件
+    - 移动 common~runtime.php 文件
     - 在 qq0330/Application/Adminuser/view/login/创建ver.html, 验证码不显示(真奇怪
     - 修改管理员密码
 - lbby配置
     - 修改数据库配置文件
     - 删除 .user.ini 文件
+    - 可能需要开一下调试模式再关闭

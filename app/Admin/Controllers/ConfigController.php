@@ -22,6 +22,7 @@ class ConfigController extends AdminController
             $grid->column('title');
             $grid->column('share_title');
             $grid->column('link');
+            $grid->column('wechat_img')->image('', 60);
             $grid->column('share_img')->image('', 60);
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
@@ -51,6 +52,7 @@ class ConfigController extends AdminController
             $show->field('title');
             $show->field('link');
             $show->field('share_title');
+            $show->field('wechat_img')->image();
             $show->field('share_img')->image();
             $show->field('created_at');
             $show->field('updated_at');
@@ -70,6 +72,7 @@ class ConfigController extends AdminController
             $form->text('title');
             $form->text('link');
             $form->text('share_title');
+            $form->image('wechat_img');
             $form->image('share_img');
 
             $form->display('created_at');

@@ -125,6 +125,18 @@ return [
              'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_YINGHUOCHONG_NEW', ''),
              'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_YINGHUOCHONG_NEW', ''),
          ],
+         'feiliya' => [
+             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID_FEILIYA', ''),
+             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET_FEILIYA', ''),
+             'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_FEILIYA', ''),
+             'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_FEILIYA', ''),
+         ],
+         'feiliya_tool' => [
+             'app_id'  => env('WECHAT_MINI_PROGRAM_APPID_FEILIYA_TOOL', ''),
+             'secret'  => env('WECHAT_MINI_PROGRAM_SECRET_FEILIYA_TOOL', ''),
+             'token'   => env('WECHAT_MINI_PROGRAM_TOKEN_FEILIYA_TOOL', ''),
+             'aes_key' => env('WECHAT_MINI_PROGRAM_AES_KEY_FEILIYA_TOOL', ''),
+         ],
      ],
 
     /*
