@@ -1,10 +1,29 @@
 ## 注意事项
-- 更换小程序后, 需要手动在数据库重置 weapp_openid, 因为没有 UnionId
 
-- 小程序需要修改 
+- 服务器配置------
+    - mysql56, php74, phpmyadmin4.4, redis
+    - 需要修改 nginx.conf 配置 client_max_body_size 100M; 重启 nginx, php 配置修改 upload_max_filesize 100M
+    - 需要删除 php 配置的 put-env, prop_open 禁用函数, 安装 fileinfo opcache redis exif 扩展
+    - 修改php-cli版本, rm -rf /usr/bin/php ln -sf /www/server/php/74/bin/php /usr/bin/php
+
+- weixin配置------
+    - 目录www:www权限 755
+    - php7.4
+    - 清除数据库
+    - 修改数据库配置文件
+    - 删除 .user.ini 文件
+    - 移动 common~runtime.php 文件
+    - 在 qq0330/Application/Adminuser/view/login/创建ver.html, 验证码不显示(真奇怪
+    - 修改管理员密码
+- lbby配置------
+    - 修改数据库配置文件
+    - 删除 .user.ini 文件
+    - 可能需要开一下调试模式再关闭
+
+- 小程序需要修改------
   - 后台, CodeToSession@weappCodeToSession(这个好像不用动)
   - 后台, .env appid appsecret host user database url REDIS_CLENT=predis
-  - adminTablesSeeder 需要注释命名空间, composer添加database/Seeders 添加Seeders文件夹, 修改namespace Database\Seeders;
+  - adminTablesSeeder composer添加database/seeders 添加seeders文件夹, 添加 namespace Database\Seeders; Factories改为 factories; composer dump-autoload
   - Model/Qun, Model/Video
   - 数据库修改users.email_verified_at
   -
@@ -21,23 +40,4 @@
       systemctl stop horizon.service
       journalctl -u horizon.service 查看实时日志
 
-- 服务器配置
-  - 需要修改 nginx.conf 配置 client_max_body_size 100M; 重启 nginx
-  - mysql56, php74, phpmyadmin4.4, redis
-  - 需要删除 php 配置的 put-env, prop_open 禁用函数, 安装 redis, opcache, exif, fileinfo 扩展
-  - 修改php-cli版本, rm -rf /usr/bin/php ln -sf /www/server/php/74/bin/php /usr/bin/php
-
-
-- weixin配置
-    - 目录www:www权限
-    - php7.4
-    - 清除数据库
-    - 修改数据库配置文件
-    - 删除 .user.ini 文件
-    - 移动 common~runtime.php 文件
-    - 在 qq0330/Application/Adminuser/view/login/创建ver.html, 验证码不显示(真奇怪
-    - 修改管理员密码
-- lbby配置
-    - 修改数据库配置文件
-    - 删除 .user.ini 文件
-    - 可能需要开一下调试模式再关闭
+- 更换小程序后, 需要手动在数据库重置 weapp_openid, 因为没有 UnionId

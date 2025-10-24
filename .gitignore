@@ -13,3 +13,6 @@ yarn-error.log
 .idea
 /public/uploads
 storage
+/public/logs/
+public/bitget*
+public/config*
