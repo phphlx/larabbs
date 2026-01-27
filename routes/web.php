@@ -42,3 +42,4 @@ Route::get('quns/{qun}', [\App\Http\Controllers\QunsController::class, 'show'])-
 // 竟然和 public/images文件夹冲突
 Route::post('image', 'ImagesController@store')->name('images.store');
 Route::get('images/{image}', 'ImagesController@show')->name('images.show');
+Route::get('generate', [\App\Http\Controllers\UsersController::class, 'generate'])->name('codes.generate');
